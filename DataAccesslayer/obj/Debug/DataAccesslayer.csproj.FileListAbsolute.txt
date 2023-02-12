@@ -1,0 +1,11 @@
+C:\Users\geeks\source\repos\PokeBinda\DataAccesslayer\bin\Debug\DataAccesslayer.dll
+C:\Users\geeks\source\repos\PokeBinda\DataAccesslayer\bin\Debug\DataAccesslayer.pdb
+C:\Users\geeks\source\repos\PokeBinda\DataAccesslayer\bin\Debug\DataAccessInterfaces.dll
+C:\Users\geeks\source\repos\PokeBinda\DataAccesslayer\bin\Debug\DataObjects.dll
+C:\Users\geeks\source\repos\PokeBinda\DataAccesslayer\bin\Debug\DataAccessInterfaces.pdb
+C:\Users\geeks\source\repos\PokeBinda\DataAccesslayer\bin\Debug\DataObjects.pdb
+C:\Users\geeks\source\repos\PokeBinda\DataAccesslayer\obj\Debug\DataAccesslayer.csproj.AssemblyReference.cache
+C:\Users\geeks\source\repos\PokeBinda\DataAccesslayer\obj\Debug\DataAccesslayer.csproj.CoreCompileInputs.cache
+C:\Users\geeks\source\repos\PokeBinda\DataAccesslayer\obj\Debug\DataAccesslayer.csproj.CopyComplete
+C:\Users\geeks\source\repos\PokeBinda\DataAccesslayer\obj\Debug\DataAccesslayer.dll
+C:\Users\geeks\source\repos\PokeBinda\DataAccesslayer\obj\Debug\DataAccesslayer.pdb

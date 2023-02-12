@@ -1,0 +1,15 @@
+C:\Users\geeks\source\repos\PokeBinda\LogicLayerInterfaces\bin\Debug\LogicLayerInterfaces.dll
+C:\Users\geeks\source\repos\PokeBinda\LogicLayerInterfaces\bin\Debug\LogicLayerInterfaces.pdb
+C:\Users\geeks\source\repos\PokeBinda\LogicLayerInterfaces\bin\Debug\DataAccessFakes.dll
+C:\Users\geeks\source\repos\PokeBinda\LogicLayerInterfaces\bin\Debug\DataAccessInterfaces.dll
+C:\Users\geeks\source\repos\PokeBinda\LogicLayerInterfaces\bin\Debug\DataAccesslayer.dll
+C:\Users\geeks\source\repos\PokeBinda\LogicLayerInterfaces\bin\Debug\DataObjects.dll
+C:\Users\geeks\source\repos\PokeBinda\LogicLayerInterfaces\bin\Debug\DataAccessFakes.pdb
+C:\Users\geeks\source\repos\PokeBinda\LogicLayerInterfaces\bin\Debug\DataAccessInterfaces.pdb
+C:\Users\geeks\source\repos\PokeBinda\LogicLayerInterfaces\bin\Debug\DataAccesslayer.pdb
+C:\Users\geeks\source\repos\PokeBinda\LogicLayerInterfaces\bin\Debug\DataObjects.pdb
+C:\Users\geeks\source\repos\PokeBinda\LogicLayerInterfaces\obj\Debug\LogicLayerInterfaces.csproj.AssemblyReference.cache
+C:\Users\geeks\source\repos\PokeBinda\LogicLayerInterfaces\obj\Debug\LogicLayerInterfaces.csproj.CoreCompileInputs.cache
+C:\Users\geeks\source\repos\PokeBinda\LogicLayerInterfaces\obj\Debug\LogicLayerInterfaces.csproj.CopyComplete
+C:\Users\geeks\source\repos\PokeBinda\LogicLayerInterfaces\obj\Debug\LogicLayerInterfaces.dll
+C:\Users\geeks\source\repos\PokeBinda\LogicLayerInterfaces\obj\Debug\LogicLayerInterfaces.pdb

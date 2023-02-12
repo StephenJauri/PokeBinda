@@ -1,0 +1,278 @@
+﻿<Window x:Class="PresentationLayer.DisplayCard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PresentationLayer"
+        mc:Ignorable="d"
+        Title="DisplayCard" SizeToContent="Height" Width="800" WindowStartupLocation="CenterOwner">
+    <Window.Background>
+        <LinearGradientBrush EndPoint=".6,1" StartPoint=".5,0">
+            <GradientStop Color="#FF7A4069" Offset="0.091"/>
+            <GradientStop Color="#FFA7809B" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="450"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="275"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="357"/>
+                </Grid.RowDefinitions>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="#FFC18E" Margin="5" FontSize="20" Grid.Row="0" Grid.Column="0" x:Name="txtBlockCardName">Card Name</TextBlock>
+                <Image Grid.Column="0" Grid.Row="1" Margin="10" x:Name="imgCardImage" Source="images/cards/default.png"/>
+            </Grid>
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" Grid.RowSpan="7" />
+                <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Grid.Row="0"/>
+                <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Grid.Row="1"/>
+                <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Grid.Row="2"/>
+                <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Grid.Row="3"/>
+                <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Grid.Row="4"/>
+                <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Grid.Row="5"/>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FFC18E" Margin="5" FontSize="20" Grid.Row="0" Grid.Column="0" x:Name="txtBlockStatus" >Status</TextBlock>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FFC18E" Margin="5" FontSize="20" Grid.Row="1" Grid.Column="0" x:Name="txtBlockTags" >Tag</TextBlock>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FFC18E" Margin="5" FontSize="20" Grid.Row="2" Grid.Column="0" x:Name="txtBlockPokemon" >Pokemon</TextBlock>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FFC18E" Margin="5" FontSize="20" Grid.Row="3" Grid.Column="0" x:Name="txtBlockElement" >Type</TextBlock>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FFC18E" Margin="5" FontSize="20" Grid.Row="4" Grid.Column="0" x:Name="txtBlockAbility" >Ability</TextBlock>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FFC18E" Margin="5" FontSize="20" Grid.Row="5" Grid.Column="0" x:Name="txtBlockSetNumber" >Set Number</TextBlock>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FFC18E" Margin="5" FontSize="20" Grid.Row="6" Grid.Column="0" x:Name="txtBlockReleaseDate" >Release Date</TextBlock>
+                <Grid Grid.Row="0" Grid.Column="1" x:Name="grdStatus">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Grid.Column="0" Grid.Row="0" Foreground="#FFC18E" FontSize="15" x:Name="txtBlockStatusDetails">Pristine</TextBlock>
+
+                    <Button Grid.Row="0" Grid.Column="1" Height="40" Width="40" x:Name="btnEditStatus" Background="Transparent" Click="btnEditStatus_Click">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="Button.IsMouseOver" Value="True">
+                                        <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                                        <Setter Property="RenderTransform">
+                                            <Setter.Value>
+                                                <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Setter Property="Button.Background" Value="Transparent"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Image x:Name="imgEditStatus" Source="images/icons/penicon.png"/>
+                    </Button>
+                </Grid>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Grid.Column="1" Grid.Row="1" Foreground="#FFC18E" FontSize="15" x:Name="txtBlockTagDetails">Tag</TextBlock>
+                <Grid Grid.Row="2" Grid.Column="1" x:Name="grdPokemon">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                    <local:UCPokemon Grid.Row="0" />
+                </Grid>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Grid.Column="1" Grid.Row="3" Foreground="#FFC18E" FontSize="15" x:Name="txtBlockElementDetails">Element</TextBlock>
+                <Grid Grid.Row="4" Grid.Column="1" x:Name="grdAbilities">
+
+                </Grid>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Grid.Column="1" Grid.Row="5" Foreground="#FFC18E" FontSize="15" x:Name="txtBlockSetNumberDetails">xxx/xxx</TextBlock>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Grid.Column="1" Grid.Row="6" Foreground="#FFC18E" FontSize="15" x:Name="txtBlockReleaseDateDetails">MM/dd/yyyy</TextBlock>
+            </Grid>
+        </ScrollViewer>
+        <!--Buttons-->
+        <Button Grid.Row="1" Grid.Column="0" Height="80" Width="80" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="btnAddToFavoriteGroup" Click="btnAddToFavoriteGroup_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Button.Background" Value="Transparent"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Image x:Name="imgFavorite" Source="images/icons/notfavoriteicon.png"/>
+        </Button>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0" Grid.Column="1" Height="80" Width="80" Background="Transparent" x:Name="btnAddToGroup" BorderThickness="0" Click="btnAddToGroup_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="Button.IsMouseOver" Value="True">
+                                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Button.Background" Value="Transparent"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Image x:Name="imgAddToGroup" Source="images/icons/addbookmarkicon.png"/>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="2" Height="80" Background="Transparent" Width="80" x:Name="btnRemoveFromGroup" BorderThickness="0"  Click="btnRemoveFromGroup_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="Button.IsMouseOver" Value="True">
+                                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Button.Background" Value="Transparent"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Image x:Name="imgRemoveFromGroup" Source="images/icons/removebookmarkicon.png"/>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="3" Height="80" Width="80" Background="Transparent" x:Name="btnRemoveFromCollection" BorderThickness="0"  Click="btnRemoveFromCollection_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="Button.IsMouseOver" Value="True">
+                                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Button.Background" Value="Transparent"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Image x:Name="imgDeleteCard" Source="images/icons/trashicon.png"/>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="3" Height="80" Width="80" Background="Transparent" x:Name="btnAddToCollection" BorderThickness="0"  Click="btnAddToCollection_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="Button.IsMouseOver" Value="True">
+                                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Button.Background" Value="Transparent"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Image x:Name="imgAddCard" Source="images/icons/plusicon.png"/>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="3" Height="80" Width="80" Background="Transparent" x:Name="btnSaveCard" BorderThickness="0"  Click="btnSaveCard_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="Button.IsMouseOver" Value="True">
+                                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Button.Background" Value="Transparent"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Image x:Name="imgSaveCard" Source="images/icons/saveicon.png"/>
+            </Button>
+        </Grid>
+        <Border BorderBrush="Black" BorderThickness="1" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right"/>
+    </Grid>
+</Window>

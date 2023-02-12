@@ -1,0 +1,11 @@
+C:\Users\geeks\source\repos\PokeBinda\DataAccessFakes\bin\Debug\DataAccessFakes.dll
+C:\Users\geeks\source\repos\PokeBinda\DataAccessFakes\bin\Debug\DataAccessFakes.pdb
+C:\Users\geeks\source\repos\PokeBinda\DataAccessFakes\bin\Debug\DataAccessInterfaces.dll
+C:\Users\geeks\source\repos\PokeBinda\DataAccessFakes\bin\Debug\DataObjects.dll
+C:\Users\geeks\source\repos\PokeBinda\DataAccessFakes\bin\Debug\DataAccessInterfaces.pdb
+C:\Users\geeks\source\repos\PokeBinda\DataAccessFakes\bin\Debug\DataObjects.pdb
+C:\Users\geeks\source\repos\PokeBinda\DataAccessFakes\obj\Debug\DataAccessFakes.csproj.AssemblyReference.cache
+C:\Users\geeks\source\repos\PokeBinda\DataAccessFakes\obj\Debug\DataAccessFakes.csproj.CoreCompileInputs.cache
+C:\Users\geeks\source\repos\PokeBinda\DataAccessFakes\obj\Debug\DataAccessFakes.csproj.CopyComplete
+C:\Users\geeks\source\repos\PokeBinda\DataAccessFakes\obj\Debug\DataAccessFakes.dll
+C:\Users\geeks\source\repos\PokeBinda\DataAccessFakes\obj\Debug\DataAccessFakes.pdb

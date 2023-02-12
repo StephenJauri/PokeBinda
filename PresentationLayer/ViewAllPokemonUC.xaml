@@ -1,0 +1,150 @@
+﻿<UserControl x:Class="PresentationLayer.ViewAllPokemonUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PresentationLayer"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" MinColumnWidth="40" x:Name="PokemonGrid" MouseDoubleClick="PokemonGrid_MouseDoubleClick" SelectionChanged="PokemonGrid_SelectionChanged">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF513252" Offset="0"/>
+                                <GradientStop Color="#FF6C526D" Offset="0.743"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Foreground" Value="#FFC18E"/>
+                    <Setter Property="FontSize" Value="15"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <SolidColorBrush Color="Transparent"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Foreground" Value="#FFC18E"/>
+                    <Setter Property="FontSize" Value="15"/>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Style>
+                <Style TargetType="DataGrid">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush EndPoint=".6,1" StartPoint=".5,0">
+                                <GradientStop Color="#FF7A4069" Offset="0.091"/>
+                                <GradientStop Color="#FFA7809B" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.Style>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding PokedexNumber}" Width="100" Header="Pokedex #" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Gen}" Width="60" Header="Gen" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Name}" Width="150" Header="Name" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Active}"  Width="60" Header="Active" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Released}"  Width="60" Header="Released" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition />
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Grid.Column="0" Height="70" Width="70" Background="Transparent" x:Name="btnAddPokemon" BorderThickness="0" Click="btnAddPokemon_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="Button.IsMouseOver" Value="True">
+                                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Button.Background" Value="Transparent"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Image x:Name="imgAddCard" Source="images/icons/plusicon.png"/>
+            </Button>
+            <Button Grid.Row="1" Grid.Column="0" Height="70" Width="70" Background="Transparent" x:Name="btnEditPokemon" BorderThickness="0" Click="btnEditPokemon_Click" >
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="Button.IsMouseOver" Value="True">
+                                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Button.Background" Value="Transparent"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Image Source="images/icons/penicon.png"/>
+            </Button>
+
+
+            <Button Visibility="Hidden" Grid.Row="3" Grid.Column="0" Height="70" Width="70" Background="Transparent" x:Name="btnSelect" BorderThickness="0" Click="btnSelect_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="Button.IsMouseOver" Value="True">
+                                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Button.Background" Value="Transparent"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Image Source="images/icons/checkselectedicon.png"/>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>

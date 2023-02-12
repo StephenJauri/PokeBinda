@@ -1,0 +1,229 @@
+﻿<Window x:Class="PresentationLayer.ViewEmployeeWPF"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PresentationLayer"
+        mc:Ignorable="d"
+        Title="View Profile" SizeToContent="Height" Width="560" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <Window.Background>
+        <LinearGradientBrush EndPoint=".6,1" StartPoint=".5,0">
+            <GradientStop Color="#FF7A4069" Offset="0.091"/>
+            <GradientStop Color="#FFA7809B" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition />
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="187"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Foreground="#FFC18E" FontSize="28"  x:Name="txtBlockWelcome">Hello Your Name</TextBlock>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right"  Margin="5 0 5 15"  Grid.Column="0" Grid.Row="1" Foreground="#FFC18E" FontSize="20" >Given Name</TextBlock>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right"  Margin="5 0 5 15"  Grid.Column="0" Grid.Row="2" Foreground="#FFC18E" FontSize="20" >Family Name</TextBlock>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right"  Margin="5 0 5 15"  Grid.Column="0" Grid.Row="3" Foreground="#FFC18E" FontSize="20" >Email</TextBlock>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right"  Margin="5 0 5 15"  Grid.Column="0" Grid.Row="4" Foreground="#FFC18E" FontSize="20" >Birthday</TextBlock>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right"  Margin="5 0 5 15"  Grid.Column="0" Grid.Row="5" Foreground="#FFC18E" FontSize="20" >Password</TextBlock>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right"  Margin="5 0 5 15"  Grid.Column="0" Grid.Row="6" Foreground="#FFC18E" FontSize="20" >Roles</TextBlock>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right"  Margin="5 0 5 15"  Grid.Column="0" Grid.Row="7" Foreground="#FFC18E" FontSize="20" >Active</TextBlock>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left"  Margin="5 0 5 15"  Grid.Column="1" Grid.Row="7" Foreground="#FFC18E" FontSize="15" x:Name="txtActive">True</TextBlock>
+
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="5 0 50 15" Height="30" VerticalContentAlignment="Center" VerticalAlignment="Center" FontSize="15" BorderBrush="Black" HorizontalContentAlignment="Left" Foreground="#FFC18E" Background="Transparent" x:Name="txtBoxGivenName">Given Name</TextBox>
+            <TextBox Grid.Row="2" Grid.Column="1" Margin="5 0 50 15" Height="30" VerticalContentAlignment="Center" VerticalAlignment="Center" FontSize="15" BorderBrush="Black" HorizontalContentAlignment="Left" Foreground="#FFC18E" Background="Transparent" x:Name="txtBoxFamilyName">Family Name</TextBox>
+            <TextBox Grid.Row="3" Grid.Column="1" Margin="5 0 50 15" Height="30" VerticalContentAlignment="Center" VerticalAlignment="Center" FontSize="15" BorderBrush="Black" HorizontalContentAlignment="Left" Foreground="#FFC18E" Background="Transparent" x:Name="txtBoxEmail">email</TextBox>
+            <TextBox Grid.Row="4" Grid.Column="1" Margin="5 0 50 15" Height="30" VerticalContentAlignment="Center" VerticalAlignment="Center" FontSize="15" BorderBrush="Black" HorizontalContentAlignment="Left" Foreground="#FFC18E" Background="Transparent" x:Name="txtBoxBirthday" IsReadOnly="True">Month dd, yyyy</TextBox>
+            <PasswordBox Grid.Row="5" Grid.Column="1" Margin="5 0 50 15" Height="30" VerticalContentAlignment="Center" VerticalAlignment="Center" FontSize="15" BorderBrush="Black" HorizontalContentAlignment="Left" Foreground="#FFC18E" Background="Transparent" x:Name="pbPassword" IsEnabled="False"></PasswordBox>
+
+
+            <Button Grid.Row="5" Grid.Column="1" Height="25" Width="25" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 5 55 0" Visibility="Visible" x:Name="btnChangePassword" Background="Transparent" Click="btnChangePassword_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="Button.IsMouseOver" Value="True">
+                                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Button.Background" Value="Transparent"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Image Source="images/icons/penicon.png"/>
+            </Button>
+
+            <Label Grid.Row="1" Grid.Column="1" Margin="10 0 0 0" VerticalAlignment="Bottom" FontSize="10" HorizontalAlignment="Left" Foreground="White" Visibility="Hidden" x:Name="lblValidationGivenName">Given Name</Label>
+            <Label Grid.Row="2" Grid.Column="1" Margin="10 0 0 0" VerticalAlignment="Bottom" FontSize="10" HorizontalAlignment="Left" Foreground="White" Visibility="Hidden" x:Name="lblValidationFamilyName">Family Name</Label>
+            <Label Grid.Row="3" Grid.Column="1" Margin="10 0 0 0" VerticalAlignment="Bottom" FontSize="10" HorizontalAlignment="Left" Foreground="White" Visibility="Hidden" x:Name="lblValidationEmail">Email</Label>
+            <Label Grid.Row="5" Grid.Column="1" Margin="10 0 0 0" VerticalAlignment="Bottom" FontSize="10" HorizontalAlignment="Left" Foreground="White" Visibility="Hidden" x:Name="lblValidationPassword">Password</Label>
+
+            <DatePicker x:Name="datePickerBirthday" Visibility="Visible" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" DisplayDateEnd="{Binding Mode=OneWay, Source={x:Static System:DateTime.Today}}" Width ="25" Height="25" VerticalContentAlignment="Center" Margin="0 -15 50 0" SelectedDateChanged="datePickerBirthday_SelectedDateChanged">
+                <DatePicker.Style>
+                    <Style TargetType="DatePicker">
+                        <Setter Property="LayoutTransform">
+                            <Setter.Value>
+                                <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Margin" Value="0"/>
+                        <Style.Resources>
+                            <Style TargetType="DatePickerTextBox">
+                                <Setter Property="Visibility" Value="Hidden"/>
+                            </Style>
+                        </Style.Resources>
+                    </Style>
+                </DatePicker.Style>
+            </DatePicker>
+            <Grid Grid.Row="6" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Grid x:Name="grdRoles">
+
+                </Grid>
+
+                <Button Grid.Row="4" Grid.Column="2" Height="40" Width="40" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"  x:Name="btnAddRole" Background="Transparent" Click="btnAddRole_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="Button.IsMouseOver" Value="True">
+                                    <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                                    <Setter Property="RenderTransform">
+                                        <Setter.Value>
+                                            <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Button.Background" Value="Transparent"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Image Source="images/icons/plusicon.png"/>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition />
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0" Grid.Column="0" Height="70" Width="70" Background="Transparent" x:Name="btnSave" Visibility="Visible" BorderThickness="0" Click="btnSave_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="Button.IsMouseOver" Value="True">
+                                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Button.Background" Value="Transparent"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Image Source="images/icons/saveicon.png"/>
+            </Button>
+            <Button Grid.Row="0" Visibility="Visible" Grid.Column="1" Height="70" Width="70" Background="Transparent" x:Name="btnCancel" BorderThickness="0" Click="btnCancel_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="Button.IsMouseOver" Value="True">
+                                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Button.Background" Value="Transparent"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Image Source="images/icons/cancelicon.png"/>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="3" Visibility="Visible" Height="30" Width="30" Background="Transparent" Margin="10" x:Name="btnDeleteAccount" HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderThickness="0" Click="btnDeleteAccount_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="Button.IsMouseOver" Value="True">
+                                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Button.Background" Value="Transparent"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Image x:Name="imgDeleteAccount" Source="images/icons/trashicon.png"/>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

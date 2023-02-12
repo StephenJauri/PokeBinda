@@ -1,0 +1,5 @@
+C:\Users\geeks\source\repos\PokeBinda\Objects\obj\Debug\DataObjects.csproj.CoreCompileInputs.cache
+C:\Users\geeks\source\repos\PokeBinda\Objects\bin\Debug\DataObjects.dll
+C:\Users\geeks\source\repos\PokeBinda\Objects\bin\Debug\DataObjects.pdb
+C:\Users\geeks\source\repos\PokeBinda\Objects\obj\Debug\DataObjects.dll
+C:\Users\geeks\source\repos\PokeBinda\Objects\obj\Debug\DataObjects.pdb

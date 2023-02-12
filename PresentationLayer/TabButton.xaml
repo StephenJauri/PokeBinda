@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="PresentationLayer.TabButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PresentationLayer"
+             mc:Ignorable="d" 
+             d:DesignHeight="115" d:DesignWidth="100">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="85" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0" Grid.Column="0" Height="70" Width="70" HorizontalAlignment="Center" Background="Transparent" Margin="0 10 0 0" Name="Clickable" BorderThickness="0">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Button.Background" Value="Transparent"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Image Source="{Binding TabImage}"/>
+        </Button>
+        <!--<Button Name="Clickable" Width="70" Height="70" Grid.Row="0" VerticalAlignment="Bottom">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="8.75"/>
+                </Style>
+            </Button.Resources>
+            <Button.Background>
+                <LinearGradientBrush EndPoint=".6,1" StartPoint=".5,0">
+                    <GradientStop Color="#CA4E79" Offset="-0.091"/>
+                    <GradientStop Color="#FFB46983" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Image Source="{Binding TabImage}" Margin="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        </Button>-->
+        <Label Content="{Binding TabLabel}" Foreground="#FFC18E" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0 0 1 0"/>
+        <Border VerticalAlignment="Top" Grid.Row="0" BorderThickness=".5" BorderBrush="Black" />
+        <Border VerticalAlignment="Bottom" Grid.Row="1" BorderThickness=".5" BorderBrush="Black" />
+    </Grid>
+</UserControl>
