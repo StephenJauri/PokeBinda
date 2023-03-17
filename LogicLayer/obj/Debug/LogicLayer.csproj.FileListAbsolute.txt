@@ -32,3 +32,20 @@ D:\PokeBinda\LogicLayer\obj\Debug\LogicLayer.csproj.CoreCompileInputs.cache
 D:\PokeBinda\LogicLayer\obj\Debug\LogicLayer.csproj.CopyComplete
 D:\PokeBinda\LogicLayer\obj\Debug\LogicLayer.dll
 D:\PokeBinda\LogicLayer\obj\Debug\LogicLayer.pdb
+G:\School Projects\PokeBinda\LogicLayer\bin\Debug\LogicLayer.dll
+G:\School Projects\PokeBinda\LogicLayer\bin\Debug\LogicLayer.pdb
+G:\School Projects\PokeBinda\LogicLayer\bin\Debug\DataAccessFakes.dll
+G:\School Projects\PokeBinda\LogicLayer\bin\Debug\DataAccessInterfaces.dll
+G:\School Projects\PokeBinda\LogicLayer\bin\Debug\DataAccesslayer.dll
+G:\School Projects\PokeBinda\LogicLayer\bin\Debug\DataObjects.dll
+G:\School Projects\PokeBinda\LogicLayer\bin\Debug\LogicLayerInterfaces.dll
+G:\School Projects\PokeBinda\LogicLayer\bin\Debug\DataAccessFakes.pdb
+G:\School Projects\PokeBinda\LogicLayer\bin\Debug\DataAccessInterfaces.pdb
+G:\School Projects\PokeBinda\LogicLayer\bin\Debug\DataAccesslayer.pdb
+G:\School Projects\PokeBinda\LogicLayer\bin\Debug\DataObjects.pdb
+G:\School Projects\PokeBinda\LogicLayer\bin\Debug\LogicLayerInterfaces.pdb
+G:\School Projects\PokeBinda\LogicLayer\obj\Debug\LogicLayer.csproj.AssemblyReference.cache
+G:\School Projects\PokeBinda\LogicLayer\obj\Debug\LogicLayer.csproj.CoreCompileInputs.cache
+G:\School Projects\PokeBinda\LogicLayer\obj\Debug\LogicLayer.csproj.CopyComplete
+G:\School Projects\PokeBinda\LogicLayer\obj\Debug\LogicLayer.dll
+G:\School Projects\PokeBinda\LogicLayer\obj\Debug\LogicLayer.pdb

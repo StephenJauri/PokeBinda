@@ -20,3 +20,14 @@ D:\PokeBinda\DataAccessFakes\obj\Debug\DataAccessFakes.csproj.CoreCompileInputs.
 D:\PokeBinda\DataAccessFakes\obj\Debug\DataAccessFakes.csproj.CopyComplete
 D:\PokeBinda\DataAccessFakes\obj\Debug\DataAccessFakes.dll
 D:\PokeBinda\DataAccessFakes\obj\Debug\DataAccessFakes.pdb
+G:\School Projects\PokeBinda\DataAccessFakes\bin\Debug\DataAccessFakes.dll
+G:\School Projects\PokeBinda\DataAccessFakes\bin\Debug\DataAccessFakes.pdb
+G:\School Projects\PokeBinda\DataAccessFakes\bin\Debug\DataAccessInterfaces.dll
+G:\School Projects\PokeBinda\DataAccessFakes\bin\Debug\DataObjects.dll
+G:\School Projects\PokeBinda\DataAccessFakes\bin\Debug\DataAccessInterfaces.pdb
+G:\School Projects\PokeBinda\DataAccessFakes\bin\Debug\DataObjects.pdb
+G:\School Projects\PokeBinda\DataAccessFakes\obj\Debug\DataAccessFakes.csproj.AssemblyReference.cache
+G:\School Projects\PokeBinda\DataAccessFakes\obj\Debug\DataAccessFakes.csproj.CoreCompileInputs.cache
+G:\School Projects\PokeBinda\DataAccessFakes\obj\Debug\DataAccessFakes.csproj.CopyComplete
+G:\School Projects\PokeBinda\DataAccessFakes\obj\Debug\DataAccessFakes.dll
+G:\School Projects\PokeBinda\DataAccessFakes\obj\Debug\DataAccessFakes.pdb

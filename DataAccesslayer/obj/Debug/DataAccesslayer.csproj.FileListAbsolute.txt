@@ -20,3 +20,14 @@ D:\PokeBinda\DataAccesslayer\obj\Debug\DataAccesslayer.csproj.CoreCompileInputs.
 D:\PokeBinda\DataAccesslayer\obj\Debug\DataAccesslayer.csproj.CopyComplete
 D:\PokeBinda\DataAccesslayer\obj\Debug\DataAccesslayer.dll
 D:\PokeBinda\DataAccesslayer\obj\Debug\DataAccesslayer.pdb
+G:\School Projects\PokeBinda\DataAccesslayer\bin\Debug\DataAccesslayer.dll
+G:\School Projects\PokeBinda\DataAccesslayer\bin\Debug\DataAccesslayer.pdb
+G:\School Projects\PokeBinda\DataAccesslayer\bin\Debug\DataAccessInterfaces.dll
+G:\School Projects\PokeBinda\DataAccesslayer\bin\Debug\DataObjects.dll
+G:\School Projects\PokeBinda\DataAccesslayer\bin\Debug\DataAccessInterfaces.pdb
+G:\School Projects\PokeBinda\DataAccesslayer\bin\Debug\DataObjects.pdb
+G:\School Projects\PokeBinda\DataAccesslayer\obj\Debug\DataAccesslayer.csproj.AssemblyReference.cache
+G:\School Projects\PokeBinda\DataAccesslayer\obj\Debug\DataAccesslayer.csproj.CoreCompileInputs.cache
+G:\School Projects\PokeBinda\DataAccesslayer\obj\Debug\DataAccesslayer.csproj.CopyComplete
+G:\School Projects\PokeBinda\DataAccesslayer\obj\Debug\DataAccesslayer.dll
+G:\School Projects\PokeBinda\DataAccesslayer\obj\Debug\DataAccesslayer.pdb

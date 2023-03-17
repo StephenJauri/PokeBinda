@@ -28,3 +28,18 @@ D:\PokeBinda\LogicLayerInterfaces\obj\Debug\LogicLayerInterfaces.csproj.CoreComp
 D:\PokeBinda\LogicLayerInterfaces\obj\Debug\LogicLayerInterfaces.csproj.CopyComplete
 D:\PokeBinda\LogicLayerInterfaces\obj\Debug\LogicLayerInterfaces.dll
 D:\PokeBinda\LogicLayerInterfaces\obj\Debug\LogicLayerInterfaces.pdb
+G:\School Projects\PokeBinda\LogicLayerInterfaces\bin\Debug\LogicLayerInterfaces.dll
+G:\School Projects\PokeBinda\LogicLayerInterfaces\bin\Debug\LogicLayerInterfaces.pdb
+G:\School Projects\PokeBinda\LogicLayerInterfaces\bin\Debug\DataAccessFakes.dll
+G:\School Projects\PokeBinda\LogicLayerInterfaces\bin\Debug\DataAccessInterfaces.dll
+G:\School Projects\PokeBinda\LogicLayerInterfaces\bin\Debug\DataAccesslayer.dll
+G:\School Projects\PokeBinda\LogicLayerInterfaces\bin\Debug\DataObjects.dll
+G:\School Projects\PokeBinda\LogicLayerInterfaces\bin\Debug\DataAccessFakes.pdb
+G:\School Projects\PokeBinda\LogicLayerInterfaces\bin\Debug\DataAccessInterfaces.pdb
+G:\School Projects\PokeBinda\LogicLayerInterfaces\bin\Debug\DataAccesslayer.pdb
+G:\School Projects\PokeBinda\LogicLayerInterfaces\bin\Debug\DataObjects.pdb
+G:\School Projects\PokeBinda\LogicLayerInterfaces\obj\Debug\LogicLayerInterfaces.csproj.AssemblyReference.cache
+G:\School Projects\PokeBinda\LogicLayerInterfaces\obj\Debug\LogicLayerInterfaces.csproj.CoreCompileInputs.cache
+G:\School Projects\PokeBinda\LogicLayerInterfaces\obj\Debug\LogicLayerInterfaces.csproj.CopyComplete
+G:\School Projects\PokeBinda\LogicLayerInterfaces\obj\Debug\LogicLayerInterfaces.dll
+G:\School Projects\PokeBinda\LogicLayerInterfaces\obj\Debug\LogicLayerInterfaces.pdb
