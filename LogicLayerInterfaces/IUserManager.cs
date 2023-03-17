@@ -17,7 +17,6 @@ namespace LogicLayerInterfaces
         string HashSha256(string source);
         void ResetPassword(Account user, string password, string newPassword);
         void RenameGroup(User user, PokemonCardGroupVM group, string newName);
-        void AssociateCardsAndGroups(User user);
         void ChangeUserInformation(Account oldAccountInfo, Account newAccountInfo);
         void DeleteAccount(Account account, string password);
         void AddCardToGroup(UserPokemonCard card, PokemonCardGroupVM group, bool newCard);

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - PokeBinda</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Index.css" rel="stylesheet" />
+    <link href="~/Content/CardGridStyles.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PokeBinda</title>
+</head>
+<body>
+    <div class="baseGrid">
+        @* A grid seperated into a left and right *@
+        <div class="tabContainer scrollViewer">
+            @* Column 1 of baseGrid containing the tab buttons *@
+            <p>content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content<br /><br />content</p>
+        </div>
+        <div class="layer1Grid">
+            @* Column 2 Content and Start of inner grid *@
+            <div class="pageHeader">
+                @* Row 1 of layer1Grid *@
+                <h1 class="headerText">Welcome to PokeBinda</h1>
+            </div>
+            <div class="scrollViewer pageContent">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <hr />
+    <footer>
+        <p>&copy; 2023 PokeBinda</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

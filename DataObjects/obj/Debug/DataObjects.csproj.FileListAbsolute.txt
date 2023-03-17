@@ -4,3 +4,9 @@ C:\Users\geeks\source\repos\PokeBinda\DataObjects\obj\Debug\DataObjects.csproj.A
 C:\Users\geeks\source\repos\PokeBinda\DataObjects\obj\Debug\DataObjects.csproj.CoreCompileInputs.cache
 C:\Users\geeks\source\repos\PokeBinda\DataObjects\obj\Debug\DataObjects.dll
 C:\Users\geeks\source\repos\PokeBinda\DataObjects\obj\Debug\DataObjects.pdb
+D:\PokeBinda\DataObjects\bin\Debug\DataObjects.dll
+D:\PokeBinda\DataObjects\bin\Debug\DataObjects.pdb
+D:\PokeBinda\DataObjects\obj\Debug\DataObjects.csproj.AssemblyReference.cache
+D:\PokeBinda\DataObjects\obj\Debug\DataObjects.csproj.CoreCompileInputs.cache
+D:\PokeBinda\DataObjects\obj\Debug\DataObjects.dll
+D:\PokeBinda\DataObjects\obj\Debug\DataObjects.pdb

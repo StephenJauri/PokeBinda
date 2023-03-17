@@ -86,22 +86,13 @@ namespace LogicLayer
             LoadUserGroupInformation(user);
             LoadUserPokemonCardInformation(user);
             AssociateCardsAndGroups(user);
+            SeperateFavoriteGroup(user);
         }
-        public void AssociateCardsAndGroups(User user)
+        private void AssociateCardsAndGroups(User user)
         {
             try
             {
-                // favorite group
-                List<int> cardInGroup = _pokemonCardGroupCardAccessor.GetPokemonCardIDsInGroup(user.FavoriteGroup);
-                foreach (UserPokemonCard card in user.PokemonCards)
-                {
-                    if (cardInGroup.Contains(card.UserCardID))
-                    {
-                        user.FavoriteGroup.Cards.Add(card);
-                        card.Groups.Add(user.FavoriteGroup);
-                    }
-                }
-                // regular groups
+                List<int> cardInGroup = null;
                 foreach (PokemonCardGroupVM group in user.Groups)
                 {
                     cardInGroup = _pokemonCardGroupCardAccessor.GetPokemonCardIDsInGroup(group);
@@ -121,7 +112,7 @@ namespace LogicLayer
                 throw new ApplicationException("Failed to load group cards", ex);
             }
         }
-        public void LoadUserGroupInformation(User user)
+        private void LoadUserGroupInformation(User user)
         {
             List<PokemonCardGroupVM> groups = null;
             try
@@ -132,11 +123,14 @@ namespace LogicLayer
             {
                 throw new ApplicationException("Couldn't update group information", ex);
             }
-            user.FavoriteGroup = groups[0];
-            groups.Remove(user.FavoriteGroup);
             user.Groups = groups;
         }
-        public void LoadUserPokemonCardInformation(User user)
+        private static void SeperateFavoriteGroup(User user)
+        {
+            user.FavoriteGroup = user.Groups.First(group => group.Favorite);
+            user.Groups.Remove(user.FavoriteGroup);
+        }
+        private void LoadUserPokemonCardInformation(User user)
         {
             List<UserPokemonCard> userCards = null;
             try

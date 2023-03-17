@@ -441,7 +441,7 @@ namespace PresentationLayer
         private void btnEditImage_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog selectImage = new OpenFileDialog();
-            selectImage.Filter = "image files (*.png, *.gif, *.jpeg, *.jpg, *.webp|*.png;*.gif;*.jpeg;*.jpg;*.webp";
+            selectImage.Filter = "image files (*.png, *.gif, *.jpeg, *.jpg, *.webp)|*.png;*.gif;*.jpeg;*.jpg;*.webp";
             selectImage.Title = "Select Image";
             selectImage.Multiselect = false;
             if (selectImage.ShowDialog() == true)
