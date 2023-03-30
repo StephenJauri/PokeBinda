@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\PokeBinda\PresentationLayer\obj\Debug\
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\
 PresentationLayer
 none
 false
 DEBUG;TRACE
-D:\PokeBinda\PresentationLayer\App.xaml
-27294676857
-37-1705354847
-331549879514
-20-686954063
+G:\School Projects\PokeBinda\PresentationLayer\App.xaml
+271163675029
+37-94835245
+34-589775610
+20-1627909361
 ChangePasswordWPF.xaml;ConfirmPasswordPrompt.xaml;CreateAccountWPF.xaml;CreateAndEditCardWPF.xaml;DisplayCard.xaml;EmployeeCardCollection.xaml;Login.xaml;PokeBinda.xaml;PokeCardButton.xaml;SelectElementWPF.xaml;SelectRoleWPF.xaml;SelectTagWPF.xaml;TabButton.xaml;TextPrompt.xaml;TextWithRemoveUC.xaml;UCAbility.xaml;UCPokemon.xaml;UserCardCollection.xaml;ViewAbilityWPF.xaml;ViewAllAbilitiesUC.xaml;ViewAllAbilitiesWPF.xaml;ViewAllEmployeesUC.xaml;ViewAllPokemonUC.xaml;ViewAllPokemonWPF.xaml;ViewEmployeeWPF.xaml;ViewPokemonWPF.xaml;ViewProfileWPF.xaml;
 
-False
+True
 

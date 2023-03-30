@@ -16,3 +16,12 @@ D:\PokeBinda\DataAccessInterfaces\obj\Debug\DataAccessInterfaces.csproj.CoreComp
 D:\PokeBinda\DataAccessInterfaces\obj\Debug\DataAccessInterfaces.csproj.CopyComplete
 D:\PokeBinda\DataAccessInterfaces\obj\Debug\DataAccessInterfaces.dll
 D:\PokeBinda\DataAccessInterfaces\obj\Debug\DataAccessInterfaces.pdb
+G:\School Projects\PokeBinda\DataAccessInterfaces\bin\Debug\DataAccessInterfaces.dll
+G:\School Projects\PokeBinda\DataAccessInterfaces\bin\Debug\DataAccessInterfaces.pdb
+G:\School Projects\PokeBinda\DataAccessInterfaces\bin\Debug\DataObjects.dll
+G:\School Projects\PokeBinda\DataAccessInterfaces\bin\Debug\DataObjects.pdb
+G:\School Projects\PokeBinda\DataAccessInterfaces\obj\Debug\DataAccessInterfaces.csproj.AssemblyReference.cache
+G:\School Projects\PokeBinda\DataAccessInterfaces\obj\Debug\DataAccessInterfaces.csproj.CoreCompileInputs.cache
+G:\School Projects\PokeBinda\DataAccessInterfaces\obj\Debug\DataAccessInterfaces.csproj.CopyComplete
+G:\School Projects\PokeBinda\DataAccessInterfaces\obj\Debug\DataAccessInterfaces.dll
+G:\School Projects\PokeBinda\DataAccessInterfaces\obj\Debug\DataAccessInterfaces.pdb

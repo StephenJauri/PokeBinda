@@ -10,3 +10,9 @@ D:\PokeBinda\DataObjects\obj\Debug\DataObjects.csproj.AssemblyReference.cache
 D:\PokeBinda\DataObjects\obj\Debug\DataObjects.csproj.CoreCompileInputs.cache
 D:\PokeBinda\DataObjects\obj\Debug\DataObjects.dll
 D:\PokeBinda\DataObjects\obj\Debug\DataObjects.pdb
+G:\School Projects\PokeBinda\DataObjects\bin\Debug\DataObjects.dll
+G:\School Projects\PokeBinda\DataObjects\bin\Debug\DataObjects.pdb
+G:\School Projects\PokeBinda\DataObjects\obj\Debug\DataObjects.csproj.AssemblyReference.cache
+G:\School Projects\PokeBinda\DataObjects\obj\Debug\DataObjects.csproj.CoreCompileInputs.cache
+G:\School Projects\PokeBinda\DataObjects\obj\Debug\DataObjects.dll
+G:\School Projects\PokeBinda\DataObjects\obj\Debug\DataObjects.pdb
