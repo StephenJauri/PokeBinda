@@ -3,12 +3,17 @@
 @{
     ViewBag.Title = "Login";
 }
+@section styles
+{
+    <link href="~/Content/login.css" rel="stylesheet" />
+}
+
 @using (Html.BeginForm())
 {
-    <div class="outerGrid">
-        @Html.LabelFor(model => model.Email, new { @class = "label"})
-        @Html.TextBoxFor(model => model.Email, new { @class = "emailInput" })
-        @Html.LabelFor(model => model.Password, new { @class = "label" })
-        @Html.PasswordFor(model => model.Password, new { @class = "passwordInput" })
+    <div class="outer-grid">
+            @Html.LabelFor(model => model.Email, new { @class = "label email-label" })
+            @Html.TextBoxFor(model => model.Email, new { @class = "emailInput email-input" })
+            @Html.LabelFor(model => model.Password, new { @class = "label password-label" })
+            @Html.PasswordFor(model => model.Password, new { @class = "passwordInput password-input" })
     </div>
 }

@@ -1,1 +1,26 @@
-﻿
+﻿.label {
+    color: #FFC18E;
+}
+
+.outer-grid
+{
+    display: grid;
+    grid-template-rows: 100px 100px 100px 100px;
+}
+
+.email-label
+{
+    grid-row: 1;
+}
+
+.email-input {
+    grid-row: 2;
+}
+
+.password-label {
+    grid-row: 3;
+}
+
+.password-input {
+    grid-row: 4;
+}
