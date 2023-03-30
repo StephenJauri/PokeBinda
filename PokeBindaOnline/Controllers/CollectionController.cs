@@ -18,10 +18,10 @@ namespace PokeBindaOnline.Controllers
         public ActionResult Index()
         {
             List<UserPokemonCard> userCards = null;
-            try
-            {
-                userCards = _userManager.
-            }
+            //try
+            //{
+            //    userCards = _userManager.
+            //}
             return View();
         }
     }
