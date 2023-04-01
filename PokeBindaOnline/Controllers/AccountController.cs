@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.Design;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -151,22 +152,56 @@ namespace PokeBindaOnline.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                LogicLayerInterfaces.IEmployeeManager employeeManager = new LogicLayer.EmployeeManager();
+                try
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    if (employeeManager.FindUser(model.Email))
+                    {
+                        var existingUser = employeeManager.LoginEmployee(model.Email, model.Password);
+                        var user = new ApplicationUser
+                        {
+                            GivenName = existingUser.GivenName,
+                            FamilyName = existingUser.FamilyName,
+                            EmployeeID = existingUser.EmployeeID,
 
-                    return RedirectToAction("Index", "Home");
+                            UserName = model.Email,
+                            Email = model.Email
+                        };
+
+                        var result = await UserManager.CreateAsync(user, model.Password);
+                        if (result.Succeeded)
+                        {
+                            foreach (var role in existingUser.Trash)
+                            {
+                                UserManager.AddToRole(user.Id, role);
+                            }
+                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                            return RedirectToAction("Index", "Home");
+                        }
+                        AddErrors(result);
+                    }
+                    else
+                    {
+                        var user = new ApplicationUser()
+                        {
+                            UserName = model.Email,
+                            Email = model.Email
+                        };
+                        var result = await UserManager.CreateAsync(user, model.Password);
+                        if (result.Succeeded)
+                        {
+                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                            return RedirectToAction("Index", "Home");
+                        }
+                        AddErrors(result);
+                    }
                 }
-                AddErrors(result);
+                catch
+                {
+                    return ViewTechnology(model);
+                }
             }
+            return ViewTechnology(model);
 
             // If we got this far, something failed, redisplay form
             return View(model);

@@ -105,7 +105,6 @@ namespace LogicLayer
                 throw new ApplicationException("Failed to Update account information", ex);
             }
         }
-
         public List<Employee> GetAllEmployees()
         {
             List<Employee> employees = null;
@@ -123,7 +122,6 @@ namespace LogicLayer
             }
             return employees;
         }
-
         public void ChangeEmployeePasswordAdmin(Employee employee, string password)
         {
             password = HashSha256(password);
@@ -139,7 +137,6 @@ namespace LogicLayer
                 throw new ApplicationException("Failed to update employee password!", ex);
             }
         }
-
         public void CreateEmployee(Employee employee, string password)
         {
             employee.Email = employee.Email.ToLower();
@@ -160,7 +157,6 @@ namespace LogicLayer
                 throw new ApplicationException("Failed to create account", ex);
             }
         }
-
         public void ChangeEmployeeAdmin(Employee employee)
         {
             employee.Email = employee.Email.ToLower();
@@ -180,7 +176,6 @@ namespace LogicLayer
                 throw new ApplicationException("Failed to update account", ex);
             }
         }
-
         public List<string> GetAllRoles()
         {
             List<string> roles;
@@ -193,6 +188,53 @@ namespace LogicLayer
                 throw new ApplicationException("Failed to load roles", ex);
             }
             return roles;
+        }
+        public bool FindUser(string email)
+        {
+            try
+            {
+                return _employeeAccessor.SelectCountOfEmail(email) == 1;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to search for that email", ex);
+            }
+        }
+
+        public int RetrieveEmployeeIDFromEmail(string email)
+        {
+            try
+            {
+                return _employeeAccessor.SelectEmployeeByEmail(email).ID;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Database Error", ex);
+            }
+        }
+
+        public bool DeleteEmployeeRole(int employeeID, string roleName)
+        {
+            try
+            {
+                return _employeeAccessor.DeleteEmployeeRole(employeeID, roleName) != 0;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Database Error", ex);
+            }
+        }
+
+        public bool AddEmployeeRole(int employeeID, string roleName)
+        {
+            try
+            {
+                return _employeeAccessor.InsertEmployeeRole(employeeID, roleName) != 0;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Database Error", ex);
+            }
         }
     }
 }

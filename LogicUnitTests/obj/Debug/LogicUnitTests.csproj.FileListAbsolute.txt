@@ -24,3 +24,29 @@ D:\PokeBinda\LogicUnitTests\obj\Debug\LogicUnitTests.csproj.CoreCompileInputs.ca
 D:\PokeBinda\LogicUnitTests\obj\Debug\LogicUnitTests.csproj.CopyComplete
 D:\PokeBinda\LogicUnitTests\obj\Debug\LogicUnitTests.dll
 D:\PokeBinda\LogicUnitTests\obj\Debug\LogicUnitTests.pdb
+G:\School Projects\PokeBinda\LogicUnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+G:\School Projects\PokeBinda\LogicUnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+G:\School Projects\PokeBinda\LogicUnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+G:\School Projects\PokeBinda\LogicUnitTests\bin\Debug\LogicUnitTests.dll
+G:\School Projects\PokeBinda\LogicUnitTests\bin\Debug\LogicUnitTests.pdb
+G:\School Projects\PokeBinda\LogicUnitTests\bin\Debug\DataAccessFakes.dll
+G:\School Projects\PokeBinda\LogicUnitTests\bin\Debug\DataAccessInterfaces.dll
+G:\School Projects\PokeBinda\LogicUnitTests\bin\Debug\DataAccesslayer.dll
+G:\School Projects\PokeBinda\LogicUnitTests\bin\Debug\DataObjects.dll
+G:\School Projects\PokeBinda\LogicUnitTests\bin\Debug\LogicLayer.dll
+G:\School Projects\PokeBinda\LogicUnitTests\bin\Debug\LogicLayerInterfaces.dll
+G:\School Projects\PokeBinda\LogicUnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+G:\School Projects\PokeBinda\LogicUnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+G:\School Projects\PokeBinda\LogicUnitTests\bin\Debug\DataAccessFakes.pdb
+G:\School Projects\PokeBinda\LogicUnitTests\bin\Debug\DataAccessInterfaces.pdb
+G:\School Projects\PokeBinda\LogicUnitTests\bin\Debug\DataAccesslayer.pdb
+G:\School Projects\PokeBinda\LogicUnitTests\bin\Debug\DataObjects.pdb
+G:\School Projects\PokeBinda\LogicUnitTests\bin\Debug\LogicLayerInterfaces.pdb
+G:\School Projects\PokeBinda\LogicUnitTests\bin\Debug\LogicLayer.pdb
+G:\School Projects\PokeBinda\LogicUnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+G:\School Projects\PokeBinda\LogicUnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+G:\School Projects\PokeBinda\LogicUnitTests\obj\Debug\LogicUnitTests.csproj.AssemblyReference.cache
+G:\School Projects\PokeBinda\LogicUnitTests\obj\Debug\LogicUnitTests.csproj.CoreCompileInputs.cache
+G:\School Projects\PokeBinda\LogicUnitTests\obj\Debug\LogicUnitTests.csproj.CopyComplete
+G:\School Projects\PokeBinda\LogicUnitTests\obj\Debug\LogicUnitTests.dll
+G:\School Projects\PokeBinda\LogicUnitTests\obj\Debug\LogicUnitTests.pdb

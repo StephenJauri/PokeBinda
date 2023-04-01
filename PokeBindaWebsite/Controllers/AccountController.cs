@@ -149,26 +149,60 @@ namespace PokeBindaWebsite.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                LogicLayerInterfaces.IEmployeeManager employeeManager = new LogicLayer.EmployeeManager();
+                try
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    if (employeeManager.FindUser(model.Email))
+                    {
+                        var existingUser = employeeManager.LoginEmployee(model.Email, model.Password);
+                        var user = new ApplicationUser
+                        {
+                            GivenName = existingUser.GivenName,
+                            FamilyName = existingUser.FamilyName,
+                            EmployeeID = existingUser.ID,
+                            UserName = model.Email,
+                            Email = model.Email
+                        };
 
-                    return RedirectToAction("Index", "Home");
+                        var result = await UserManager.CreateAsync(user, model.Password);
+                        if (result.Succeeded)
+                        {
+                            foreach (var role in existingUser.Roles)
+                            {
+                                UserManager.AddToRole(user.Id, role);
+                            }
+                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                            return RedirectToAction("Index", "Home");
+                        }
+                        AddErrors(result);
+                    }
+                    else
+                    {
+                        var user = new ApplicationUser()
+                        {
+                            GivenName = model.GivenName,
+                            FamilyName = model.FamilyName,
+                            UserName = model.Email,
+                            Email = model.Email
+                        };
+                        var result = await UserManager.CreateAsync(user, model.Password);
+                        if (result.Succeeded)
+                        {
+                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                            return RedirectToAction("Index", "Home");
+                        }
+                        AddErrors(result);
+                    }
                 }
-                AddErrors(result);
+                catch
+                {
+                    return View(model);
+                }
             }
 
-            // If we got this far, something failed, redisplay form
             return View(model);
         }
 
@@ -316,6 +350,72 @@ namespace PokeBindaWebsite.Controllers
             }
             return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
         }
+
+
+        public ActionResult RegisterEmployee()
+        {
+            return View();
+        }
+
+
+        //
+        // POST: /Account/Register
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RegisterEmployee(RegisterEmployeeViewModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                LogicLayerInterfaces.IEmployeeManager employeeManager = new LogicLayer.EmployeeManager();
+                try
+                {
+                    if (employeeManager.FindUser(model.Email))
+                    {
+                        return RedirectToAction("Register", "Account");
+                    }
+                    else
+                    {
+                        var employee = new DataObjects.Employee()
+                        {
+                            Email = model.Email,
+                            FamilyName = model.FamilyName,
+                            GivenName = model.GivenName,
+                            CreationDate = DateTime.Now,
+                            Active = true,
+                            Birthday = DateTime.Today,
+                            Roles = new System.Collections.Generic.List<string>()
+                        };
+                        employeeManager.CreateEmployee(employee, "P@ssw0rd");
+                        var employeeID = employeeManager.RetrieveEmployeeIDFromEmail(model.Email);
+                        var user = new ApplicationUser
+                        {
+                            EmployeeID = employeeID,
+                            GivenName = model.GivenName,
+                            FamilyName = model.FamilyName,
+                            UserName = model.Email,
+                            Email = model.Email
+                        };
+
+                        var result = await UserManager.CreateAsync(user, "P@ssw0rd");
+                        if (result.Succeeded)
+                        {
+                            return RedirectToAction("Index", "Admin");
+                        }
+                        AddErrors(result);
+                    }
+                }
+                catch
+                {
+                    return View(model);
+                }
+
+            }
+
+            return View(model);
+        }
+
 
         //
         // GET: /Account/ExternalLoginCallback

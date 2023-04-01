@@ -268,3 +268,39 @@ D:\PokeBinda\PresentationLayer\obj\Debug\PresentationLayer.csproj.CoreCompileInp
 D:\PokeBinda\PresentationLayer\obj\Debug\PresentationLayer.csproj.CopyComplete
 D:\PokeBinda\PresentationLayer\obj\Debug\PresentationLayer.exe
 D:\PokeBinda\PresentationLayer\obj\Debug\PresentationLayer.pdb
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\PresentationLayer.csproj.AssemblyReference.cache
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\PresentationLayer.csproj.SuggestedBindingRedirects.cache
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\ChangePasswordWPF.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\ConfirmPasswordPrompt.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\CreateAccountWPF.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\CreateAndEditCardWPF.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\DisplayCard.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\EmployeeCardCollection.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\Login.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\PokeBinda.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\PokeCardButton.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\SelectElementWPF.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\SelectRoleWPF.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\SelectTagWPF.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\TabButton.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\TextPrompt.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\TextWithRemoveUC.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\UCAbility.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\UCPokemon.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\UserCardCollection.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\ViewAbilityWPF.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\ViewAllAbilitiesUC.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\ViewAllAbilitiesWPF.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\ViewAllEmployeesUC.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\ViewAllPokemonUC.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\ViewAllPokemonWPF.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\ViewEmployeeWPF.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\ViewPokemonWPF.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\ViewProfileWPF.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\App.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\PresentationLayer_Content.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\GeneratedInternalTypeHelper.g.cs
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\PresentationLayer_MarkupCompile.cache
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\PresentationLayer_MarkupCompile.lref
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\PresentationLayer.exe
+G:\School Projects\PokeBinda\PresentationLayer\obj\Debug\PresentationLayer.pdb

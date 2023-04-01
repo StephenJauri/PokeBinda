@@ -1027,3 +1027,35 @@ AS
 		ROLLBACK
 	END CATCH
 GO
+
+
+print '' print '*** creating sp_delete_employee_role'
+GO
+CREATE PROCEDURE [dbo].[sp_delete_employee_role]
+(
+	@EmployeeID	[INT],
+	@RoleID		[NVARCHAR](16)
+)
+AS
+	BEGIN
+		DELETE FROM [EmployeeRole]
+		WHERE [EmployeeID] = @EmployeeID
+		AND	[RoleID] = @RoleID
+	END
+GO
+
+print '' print '*** creating sp_insert_employee_role'
+GO
+CREATE PROCEDURE [dbo].[sp_insert_employee_role]
+(
+	@EmployeeID	[INT],
+	@RoleID		[NVARCHAR](16)
+)
+AS
+	BEGIN
+		INSERT INTO [EmployeeRole]
+		([EmployeeID], [RoleID])
+		VALUES
+		(@EmployeeID, @RoleID)
+	END
+GO

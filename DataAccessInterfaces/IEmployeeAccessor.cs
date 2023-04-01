@@ -21,5 +21,7 @@ namespace DataAccessInterfaces
         int UpdatePasswordAdmin(Employee employee, string passwordHash);
         int UpdateEmployeeAdmin(Employee employee);
         List<string> SelectAllRoles();
+        int DeleteEmployeeRole(int employeeId, string roleId);
+        int InsertEmployeeRole(int employeeId, string roleId);
     }
 }

@@ -117,6 +117,71 @@ namespace DataAccesslayer
             return ID;
         }
 
+        public int DeleteEmployeeRole(int employeeId, string roleId)
+        {
+            int success = 0;
+
+            DBConnection connectionFactory = new DBConnection();
+            SqlConnection conn = connectionFactory.GetConnection();
+
+            string removeRoleCommand = "sp_delete_employee_role";
+
+
+            try
+            {
+                conn.Open();
+
+                SqlCommand cmdDeleteEmployeeRole = new SqlCommand(removeRoleCommand, conn);
+                cmdDeleteEmployeeRole.CommandType = CommandType.StoredProcedure;
+                cmdDeleteEmployeeRole.Parameters.Add("@EmployeeID", SqlDbType.Int).Value = employeeId;
+                cmdDeleteEmployeeRole.Parameters.Add("@RoleID", SqlDbType.NVarChar, 16).Value = roleId;
+
+                success = cmdDeleteEmployeeRole.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return success;
+        }
+
+        public int InsertEmployeeRole(int employeeId, string roleId)
+        {
+            int success = 0;
+
+            DBConnection connectionFactory = new DBConnection();
+            SqlConnection conn = connectionFactory.GetConnection();
+
+            string removeRoleCommand = "sp_insert_employee_role";
+
+
+            try
+            {
+                conn.Open();
+
+                SqlCommand cmdInsertEmployeeRole = new SqlCommand(removeRoleCommand, conn);
+                cmdInsertEmployeeRole.CommandType = CommandType.StoredProcedure;
+                cmdInsertEmployeeRole.Parameters.Add("@EmployeeID", SqlDbType.Int).Value = employeeId;
+                cmdInsertEmployeeRole.Parameters.Add("@RoleID", SqlDbType.NVarChar, 16).Value = roleId;
+
+                success = cmdInsertEmployeeRole.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return success;
+        }
 
         public List<Employee> SelectAllEmployees()
         {
