@@ -26,5 +26,8 @@ namespace LogicLayerInterfaces
         UserPokemonCard CreateUserPokemonCard(PokemonCard card);
         void DeleteUserPokemonCard(UserPokemonCard card, User user);
         void CreateUserAccount(User account, string password);
+        bool FindUser(string user);
+        int RetrieveUserIDFromEmail(string email);
+        User LoginUser(string email);
     }
 }

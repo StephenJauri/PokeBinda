@@ -7,13 +7,13 @@ namespace PokeBindaWebsite.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class EmployeeID : IMigrationMetadata
+    public sealed partial class UserID : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(EmployeeID));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(UserID));
         
         string IMigrationMetadata.Id
         {
-            get { return "202303310443196_EmployeeID"; }
+            get { return "202304040134174_UserID"; }
         }
         
         string IMigrationMetadata.Source

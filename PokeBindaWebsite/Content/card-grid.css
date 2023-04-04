@@ -1,0 +1,37 @@
+﻿﻿:root {
+    --card-height: 300px;
+    --card-width: 180px;
+    --card-grid-gap: 1rem;
+}
+
+.contentContainer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--card-width));
+    grid-gap: var(--card-grid-gap);
+    justify-content: space-evenly;
+}
+
+.card {
+    height: var(--card-height);
+    width: var(--card-width);
+    background-color: deeppink;
+}
+
+@media (min-width: 1000px) {
+    .contentContainer {
+        grid-template-columns: repeat(4, var(--card-width));
+    }
+}
+
+@media (min-width: 1280px) {
+    :root {
+        --card-height: 400px;
+        --card-width: 240px;
+        --card-grid-gap: 2rem;
+    }
+
+    .contentContainer {
+        grid-template-columns: repeat(auto-fill, var(--card-width));
+    }
+}

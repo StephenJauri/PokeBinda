@@ -415,5 +415,44 @@ namespace LogicLayer
                 throw new ApplicationException("Failed to create account", ex);
             }
         }
+
+        public bool FindUser(string email)
+        {
+            try
+            {
+                return _userAccessor.CheckIfEmailExists(email) == 1;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Failed to search for that email", ex);
+            }
+        }
+
+        public int RetrieveUserIDFromEmail(string email)
+        {
+            try
+            {
+                return _userAccessor.SelectUserByEmail(email).ID;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Database Error", ex);
+            }
+        }
+
+        public User LoginUser(string email)
+        {
+            User user = null;
+            try
+            {
+                user = _userAccessor.SelectUserByEmail(email);
+                LoadUserInformation(user);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Something went wrong logging you in.", ex);
+            }
+            return user;
+        }
     }
 }

@@ -169,7 +169,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -183,14 +183,19 @@
     <Compile Include="Migrations\202303302114137_Added First and Last Name Fields to User.Designer.cs">
       <DependentUpon>202303302114137_Added First and Last Name Fields to User.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202303310443196_EmployeeID.cs" />
-    <Compile Include="Migrations\202303310443196_EmployeeID.designer.cs">
-      <DependentUpon>202303310443196_EmployeeID.cs</DependentUpon>
+    <Compile Include="Migrations\202304040134174_UserID.cs" />
+    <Compile Include="Migrations\202304040134174_UserID.designer.cs">
+      <DependentUpon>202304040134174_UserID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304040137113_Birthday.cs" />
+    <Compile Include="Migrations\202304040137113_Birthday.designer.cs">
+      <DependentUpon>202304040137113_Birthday.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\TabModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -199,6 +204,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\card-grid.css" />
+    <Content Include="Content\home.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -250,9 +257,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Admin\Details.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Account\RegisterEmployee.cshtml" />
+    <Content Include="Views\Shared\Navigation.cshtml" />
+    <Content Include="Views\Shared\Tab.cshtml" />
+    <Content Include="Views\Collection\Group.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -277,8 +285,11 @@
     <EmbeddedResource Include="Migrations\202303302114137_Added First and Last Name Fields to User.resx">
       <DependentUpon>202303302114137_Added First and Last Name Fields to User.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303310443196_EmployeeID.resx">
-      <DependentUpon>202303310443196_EmployeeID.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202304040134174_UserID.resx">
+      <DependentUpon>202304040134174_UserID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304040137113_Birthday.resx">
+      <DependentUpon>202304040137113_Birthday.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

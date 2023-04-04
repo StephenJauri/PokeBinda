@@ -1,0 +1,7 @@
+﻿@model PokeBindaWebsite.Models.TabModel
+
+@Html.ActionLink(Model.Name, Model.Action, Model.Controller, Model.RouteValues, new { @class = "tab-link" });
+<a href="@Url.Action(Model.Action,Model.Controller,Model.RouteValues)">
+        <img src="@Model.Image" class="tab-image" />
+        <h5 class="tab-text">@Model.Name</h5>
+</a>

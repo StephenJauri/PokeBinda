@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -11,7 +12,8 @@ namespace PokeBindaWebsite.Models
     {
         public string GivenName { get; set; }
         public string FamilyName { get; set; }
-        public int? EmployeeID { get; set; }
+        public int? UserID { get; set; }
+        public DateTime Birthday { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

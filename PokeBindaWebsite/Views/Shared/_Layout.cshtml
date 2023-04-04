@@ -3,45 +3,34 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - PokeBinda</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <link href="~/Content/Outline.css" rel="stylesheet" />
+    @RenderSection("styles", required: false)
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PokeBinda - @ViewBag.Title</title>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li> @Html.ActionLink("About", "About", "Home") </li>
-                    }
-                    @if (User.IsInRole("Admin"))
+    <div class="baseGrid">
+        @* A grid seperated into a left and right *@
+        <div class="scrollViewer tabContainer">
+            @* Column 1 of baseGrid containing the tab buttons *@
+            @if (User.Identity.IsAuthenticated)
             {
-                <li>@Html.ActionLink("User Administration", "Index", "Admin")</li>
+                @Html.Partial("Navigation", Session["User"])
             }
-                </ul>
-                @Html.Partial("_LoginPartial")
+        </div>
+        <div class="layer1Grid">
+            @* Column 2 Content and Start of inner grid *@
+            <div class="pageHeader">
+                @* Row 1 of layer1Grid *@
+                <h1 class="headerText">@ViewBag.Title</h1>
+            </div>
+            <div class="scrollViewer pageContent">
+                @RenderBody()
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

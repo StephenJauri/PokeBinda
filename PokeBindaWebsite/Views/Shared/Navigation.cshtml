@@ -1,0 +1,47 @@
+﻿@model DataObjects.User
+
+
+@Html.Partial("Tab", new PokeBindaWebsite.Models.TabModel()
+{
+    Action = "Group",
+    Controller = "Collection",
+    Image = "favorite.png",
+    Name = Model.FavoriteGroup.Name,
+    RouteValues = new { group = Model.FavoriteGroup.ID }
+})
+
+@Html.Partial("Tab", new PokeBindaWebsite.Models.TabModel()
+{
+    Action = "Index",
+    Controller = "Browse",
+    Image = "browse.png",
+    Name = "Browse"
+})
+
+@Html.Partial("Tab", new PokeBindaWebsite.Models.TabModel()
+{
+    Action = "Index",
+    Controller = "Collection",
+    Image = "collection.png",
+    Name = "My Collection"
+})
+
+@foreach (var group in Model.Groups)
+{
+    @Html.Partial("Tab", new PokeBindaWebsite.Models.TabModel()
+{
+    Action = "Group",
+    Controller = "Collection",
+    Image = "group.png",
+    Name = group.Name,
+    RouteValues = new { group = group.ID }
+})
+}
+
+@Html.Partial("Tab", new PokeBindaWebsite.Models.TabModel()
+{
+    Action = "NewGroup",
+    Controller = "Collection",
+    Image = "newgroup.png",
+    Name = "New Group"
+})

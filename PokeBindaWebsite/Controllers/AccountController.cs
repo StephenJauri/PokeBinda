@@ -5,6 +5,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using DataObjects;
+using LogicLayer;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -79,6 +81,7 @@ namespace PokeBindaWebsite.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    Session["User"] = new LogicLayer.UserManager(new CardManager()).LoginUser(model.Email, model.Password);
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -152,28 +155,24 @@ namespace PokeBindaWebsite.Controllers
 
             if (ModelState.IsValid)
             {
-                LogicLayerInterfaces.IEmployeeManager employeeManager = new LogicLayer.EmployeeManager();
+                LogicLayerInterfaces.IUserManager userManager = new UserManager(new CardManager());
                 try
                 {
-                    if (employeeManager.FindUser(model.Email))
+                    if (userManager.FindUser(model.Email))
                     {
-                        var existingUser = employeeManager.LoginEmployee(model.Email, model.Password);
+                        var existingUser = userManager.LoginUser(model.Email, model.Password);
                         var user = new ApplicationUser
                         {
                             GivenName = existingUser.GivenName,
                             FamilyName = existingUser.FamilyName,
-                            EmployeeID = existingUser.ID,
+                            UserID = existingUser.ID,
                             UserName = model.Email,
+                            Birthday = existingUser.Birthday,
                             Email = model.Email
                         };
-
                         var result = await UserManager.CreateAsync(user, model.Password);
                         if (result.Succeeded)
                         {
-                            foreach (var role in existingUser.Roles)
-                            {
-                                UserManager.AddToRole(user.Id, role);
-                            }
                             await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                             return RedirectToAction("Index", "Home");
                         }
@@ -181,13 +180,28 @@ namespace PokeBindaWebsite.Controllers
                     }
                     else
                     {
+                        var internalUser = new User()
+                        {
+                            GivenName = model.GivenName,
+                            FamilyName = model.FamilyName,
+                            Active = true,
+                            CreationDate = DateTime.Now,
+                            Birthday = model.Birthday,
+                            Email = model.Email
+                        };
+
+                        userManager.CreateUserAccount(internalUser, model.Password);
+                        int newUserID = userManager.RetrieveUserIDFromEmail(model.Email);
                         var user = new ApplicationUser()
                         {
                             GivenName = model.GivenName,
                             FamilyName = model.FamilyName,
                             UserName = model.Email,
-                            Email = model.Email
+                            Birthday = model.Birthday,
+                            Email = model.Email,
+                            UserID = newUserID
                         };
+
                         var result = await UserManager.CreateAsync(user, model.Password);
                         if (result.Succeeded)
                         {
@@ -356,66 +370,6 @@ namespace PokeBindaWebsite.Controllers
         {
             return View();
         }
-
-
-        //
-        // POST: /Account/Register
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> RegisterEmployee(RegisterEmployeeViewModel model)
-        {
-
-            if (ModelState.IsValid)
-            {
-                LogicLayerInterfaces.IEmployeeManager employeeManager = new LogicLayer.EmployeeManager();
-                try
-                {
-                    if (employeeManager.FindUser(model.Email))
-                    {
-                        return RedirectToAction("Register", "Account");
-                    }
-                    else
-                    {
-                        var employee = new DataObjects.Employee()
-                        {
-                            Email = model.Email,
-                            FamilyName = model.FamilyName,
-                            GivenName = model.GivenName,
-                            CreationDate = DateTime.Now,
-                            Active = true,
-                            Birthday = DateTime.Today,
-                            Roles = new System.Collections.Generic.List<string>()
-                        };
-                        employeeManager.CreateEmployee(employee, "P@ssw0rd");
-                        var employeeID = employeeManager.RetrieveEmployeeIDFromEmail(model.Email);
-                        var user = new ApplicationUser
-                        {
-                            EmployeeID = employeeID,
-                            GivenName = model.GivenName,
-                            FamilyName = model.FamilyName,
-                            UserName = model.Email,
-                            Email = model.Email
-                        };
-
-                        var result = await UserManager.CreateAsync(user, "P@ssw0rd");
-                        if (result.Succeeded)
-                        {
-                            return RedirectToAction("Index", "Admin");
-                        }
-                        AddErrors(result);
-                    }
-                }
-                catch
-                {
-                    return View(model);
-                }
-
-            }
-
-            return View(model);
-        }
-
 
         //
         // GET: /Account/ExternalLoginCallback
