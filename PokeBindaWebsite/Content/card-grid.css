@@ -1,37 +1,87 @@
-﻿﻿:root {
-    --card-height: 300px;
-    --card-width: 180px;
-    --card-grid-gap: 1rem;
-}
-
-.contentContainer {
+﻿.contentContainer {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, var(--card-width));
+    grid-auto-rows: var(--card-height);
     grid-gap: var(--card-grid-gap);
     justify-content: space-evenly;
+    padding: 10px;
 }
 
-.card {
+.card-display-grid {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr;
+}
+
+.card-form {
+    width: 100%;
+}
+
+.card-button {
     height: var(--card-height);
     width: var(--card-width);
-    background-color: deeppink;
+    background: none;
+    border: none;
 }
 
-@media (min-width: 1000px) {
-    .contentContainer {
-        grid-template-columns: repeat(4, var(--card-width));
-    }
+.card-button:hover .card-image {
+    width: 96%;
+    margin: 2%;
 }
 
-@media (min-width: 1280px) {
+.card-image {
+    width: 80%;
+    aspect-ratio: 1/1.414;
+    margin: 10%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.card-name {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    word-wrap: anywhere;
+}
+
+@media (min-width: 720px) {
     :root {
         --card-height: 400px;
         --card-width: 240px;
         --card-grid-gap: 2rem;
     }
+}
 
-    .contentContainer {
-        grid-template-columns: repeat(auto-fill, var(--card-width));
+@media (min-width: 1440px) {
+    :root {
+        --card-height: 480px;
+        --card-width: 288px;
+        --card-grid-gap: 2.25rem;
+    }
+}
+
+@media (min-width: 1920px) {
+    :root {
+        --card-height: 520px;
+        --card-width: 312px;
+        --card-grid-gap: 2.5rem;
+    }
+}
+
+@media (max-width: 720px) {
+    :root {
+        --card-height: 340px;
+        --card-width: 204px;
+        --card-grid-gap: 1rem;
+    }
+}
+
+@media (max-width: 320px) {
+    :root {
+        --card-height: 280px;
+        --card-width: 168px;
+        --card-grid-gap: 0.5rem;
     }
 }

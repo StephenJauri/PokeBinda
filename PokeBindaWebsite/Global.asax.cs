@@ -1,3 +1,5 @@
+using DataObjects;
+using PokeBindaWebsite.Infrastructure.Binders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,7 @@ namespace PokeBindaWebsite
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            ModelBinders.Binders.Add(typeof(User), new UserModelBinder());
         }
     }
 }

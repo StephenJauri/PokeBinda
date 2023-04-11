@@ -1,4 +1,5 @@
-﻿using LogicLayer;
+﻿using DataObjects;
+using LogicLayer;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using PokeBindaWebsite.Models;
@@ -14,25 +15,15 @@ namespace PokeBindaWebsite.Controllers
     {
         public ActionResult Index()
         {
-            if (User.Identity.IsAuthenticated && Session["User"] == null)
+            return View();
+        }
+        public PartialViewResult Navigation(User user)
+        {
+            if (User.Identity.IsAuthenticated)
             {
-                Session["User"] = new UserManager(new CardManager()).LoginUser(User.Identity.GetUserName());
+                return PartialView(user);
             }
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return null;
         }
     }
 }

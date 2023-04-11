@@ -1,21 +1,23 @@
-﻿﻿* {
-    margin: 0;
-    padding: 0;
-}
-
-:root {
-    --header-height: 125px;
-    --tab-bar-min-width: 125px;
+﻿:root {
+    --header-min-height: 100px;
+    --tab-bar-min-width: 100px;
     --tab-bar-max-width: 1fr;
     --content-width: 9fr;
-    --content-min-height: 125px;
+    --content-min-height: 150px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    color: #FFC18E;
 }
 
 html {
-    height: 100%;
-    min-width: 375px;
-    min-height: 400px;
+    height: 100vh;
+    min-width: 250px;
 }
+
+
 
 body {
     height: 100%;
@@ -27,14 +29,47 @@ body {
     grid-row: 1;
     grid-column: 1;
     border-right: 2px solid black;
+    display:grid;
+    grid-auto-rows;
+    grid-template-columns: 1fr;
+    grid-row-gap: 1px;
+    width: 100%;
 }
 
+.tab-form {
+    width: 100%;
+}
 
+.tab-button {
+    width: calc(100% - 20px);
+    margin: 10px;
+    aspect-ratio: 1/1;
+    border: none;
+    padding: 0;
+    background: none;
+}
+
+.tab-button:hover .tab-image {
+    width: 96%;
+    margin: 2%
+}
+
+.tab-image {
+    width: 80%;
+    margin: 10%;
+    aspect-ratio: 1/1;
+    align-self: center;
+    background-size: contain;
+}
+
+.tab-text {
+    margin: 0;
+    padding: 0;
+}
 
 .scrollViewer {
     height: 100%;
     overflow-y: auto;
-    overflow-x: hidden;
 }
 
     /* width */
@@ -71,6 +106,13 @@ body {
     grid-column: 1;
     background-image: linear-gradient(180deg, #513252 0%, #6C526D 74.3%);
     padding: var(--padding);
+    height:100%;
+    overflow:hidden;
+}
+
+#page-content {
+    width: 100%;
+    height: 100%;
 }
 
 .pageHeader {
@@ -91,7 +133,7 @@ body {
     grid-row: 1;
     grid-column: 2;
     display: grid;
-    grid-template-rows: var(--header-height) 1fr;
+    grid-template-rows: minmax(var(--header-min-height), 1fr) 9fr;
     grid-template-columns: 100%;
     width: 100%;
     height: 100%;

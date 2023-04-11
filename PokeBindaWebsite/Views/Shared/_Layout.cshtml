@@ -6,7 +6,12 @@
     <title>@ViewBag.Title - PokeBinda</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="~/Content/Outline.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <link href="~/Content/home.css" rel="stylesheet" />
+    <link href="~/Content/card-grid.css" rel="stylesheet" />
     @RenderSection("styles", required: false)
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PokeBinda - @ViewBag.Title</title>
@@ -16,10 +21,7 @@
         @* A grid seperated into a left and right *@
         <div class="scrollViewer tabContainer">
             @* Column 1 of baseGrid containing the tab buttons *@
-            @if (User.Identity.IsAuthenticated)
-            {
-                @Html.Partial("Navigation", Session["User"])
-            }
+            @Html.Action("Navigation", "Home")
         </div>
         <div class="layer1Grid">
             @* Column 2 Content and Start of inner grid *@
@@ -27,14 +29,15 @@
                 @* Row 1 of layer1Grid *@
                 <h1 class="headerText">@ViewBag.Title</h1>
             </div>
-            <div class="scrollViewer pageContent">
-                @RenderBody()
+            <div class="pageContent">
+                <h5 style="display:none;" id="loading-div">Loading...</h5>
+                <div class="scrollViewer" id="page-content">
+                    @RenderBody()
+                </div>
             </div>
         </div>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>

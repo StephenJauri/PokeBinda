@@ -1,7 +1,17 @@
 ﻿@model PokeBindaWebsite.Models.TabModel
 
-@Html.ActionLink(Model.Name, Model.Action, Model.Controller, Model.RouteValues, new { @class = "tab-link" });
-<a href="@Url.Action(Model.Action,Model.Controller,Model.RouteValues)">
-        <img src="@Model.Image" class="tab-image" />
-        <h5 class="tab-text">@Model.Name</h5>
-</a>
+@{ 
+    AjaxOptions options = new AjaxOptions()
+    {
+        UpdateTargetId = "page-content",
+        HttpMethod = "Get",
+        LoadingElementId = "loading-div"
+    };
+}
+@using (Ajax.BeginForm(Model.Action, Model.Controller, Model.RouteValues, options, new { @class = "tab-form", method="GET"}))
+{
+    <button type="submit" class="tab-button">
+        <div style="background-image:url('Images/Icons/@Model.Image')" class="tab-image"></div>
+        <h4 class="tab-text">@Model.Name</h4>
+    </button>
+}
