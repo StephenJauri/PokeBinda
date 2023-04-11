@@ -5,12 +5,12 @@
 }
 
 @Html.Hidden("group",Model.CardGroup.ID)
-<div class="card-display-grid">
-    <div>stff</div>
-    <div class="contentContainer scrollViewer">
-        @foreach (var card in Model.CardGroup.Cards)
-        {
-            @Html.Partial("UserCard", card)
-        }
+    <div class="card-display-grid">
+        <div>stff</div>
+        <div class="contentContainer scrollViewer">
+            @foreach (var card in Model.CardGroup.Cards)
+            {
+                @Html.Partial("UserCard", card)
+            }
+        </div>
     </div>
-</div>

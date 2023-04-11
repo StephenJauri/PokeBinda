@@ -11,7 +11,7 @@
 @using (Ajax.BeginForm(Model.Action, Model.Controller, Model.RouteValues, options, new { @class = "tab-form", method="GET"}))
 {
     <button type="submit" class="tab-button">
-        <div style="background-image:url('Images/Icons/@Model.Image')" class="tab-image"></div>
+        <div style="background-image:url('/Images/Icons/@Model.Image')" class="tab-image"></div>
         <h4 class="tab-text">@Model.Name</h4>
     </button>
 }

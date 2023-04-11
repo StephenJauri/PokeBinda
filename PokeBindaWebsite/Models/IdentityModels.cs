@@ -13,7 +13,7 @@ namespace PokeBindaWebsite.Models
         public string GivenName { get; set; }
         public string FamilyName { get; set; }
         public int? UserID { get; set; }
-        public DateTime Birthday { get; set; }
+        public DateTime Birthday { get; set; } = new DateTime(2000, 01, 01);
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

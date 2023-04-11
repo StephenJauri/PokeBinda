@@ -5,7 +5,8 @@
     grid-auto-rows: var(--card-height);
     grid-gap: var(--card-grid-gap);
     justify-content: space-evenly;
-    padding: 10px;
+    padding-top:10px;
+    padding-bottom:10px;
 }
 
 .card-display-grid {
@@ -17,6 +18,7 @@
 
 .card-form {
     width: 100%;
+    overflow: hidden
 }
 
 .card-button {
@@ -24,6 +26,8 @@
     width: var(--card-width);
     background: none;
     border: none;
+    display: grid;
+    grid-auto-rows: min-content;
 }
 
 .card-button:hover .card-image {
@@ -75,6 +79,9 @@
         --card-height: 340px;
         --card-width: 204px;
         --card-grid-gap: 1rem;
+    }
+    .card-name {
+        font-size: 16px;
     }
 }
 

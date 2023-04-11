@@ -10,7 +10,7 @@
 @using (Ajax.BeginForm("Card", "Collection", new { card = Model.ID }, options, new { @class = "card-form", method = "GET" }))
 {
     <button type="submit" class="card-button">
-        <div class="card-image" style="background-image: url('Images/Cards/@Model.ImageName')"></div>
+        <div class="card-image" style="background-image: url('/Images/Cards/@Model.ImageName')"></div>
         <h3 class="card-name">@Model.Name</h3>
     </button>
 }

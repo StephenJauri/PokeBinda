@@ -27,7 +27,6 @@ namespace PokeBindaWebsite.Controllers
         [HttpGet]
         public async Task<ActionResult> Group(int? group, User user)
         {
-            await Task.Delay(100);
             Debug.WriteLine(group);
 
             if (group == null)
