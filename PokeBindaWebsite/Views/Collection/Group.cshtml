@@ -4,13 +4,5 @@
     ViewBag.Title = "Group";
 }
 
-@Html.Hidden("group",Model.CardGroup.ID)
-    <div class="card-display-grid">
-        <div>stff</div>
-        <div class="contentContainer scrollViewer">
-            @foreach (var card in Model.CardGroup.Cards)
-            {
-                @Html.Partial("UserCard", card)
-            }
-        </div>
-    </div>
+@Html.Hidden("currentGroup",Model.CardGroup.ID)
+@Html.Partial("UserCards", Model.CardGroup.Cards)

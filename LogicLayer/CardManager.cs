@@ -13,6 +13,17 @@ namespace LogicLayer
 {
     public class CardManager : ICardManager
     {
+        private static CardManager instance;
+        public static CardManager Instance {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new CardManager();
+                }
+                return instance;
+            }
+        } 
         public List<PokemonCard> PokemonCards { get; private set; }
         private IPokemonCardAccessor _pokemonCardAccessor = null;
         private IImageAccessor _imageAccessor = null;
@@ -101,6 +112,29 @@ namespace LogicLayer
         public List<PokemonCard> LoadAllActiveReleasedCards()
         {
 
+            List<PokemonCard> pokemonCards = LoadAllActiveReleasedCardsMinimum();
+            LoadAllCardsInformation(pokemonCards);
+            return pokemonCards;
+        }
+
+        public PokemonCard LoadActiveReleasedCard(int id)
+        {
+            PokemonCard card;
+            try
+            {
+                card = _pokemonCardAccessor.GetPokemonCard(id);
+            }
+            catch (Exception ex) 
+            {
+                throw new ApplicationException("Unable to load the card", ex);
+            }
+            LoadCardInformation(card);
+            return card;
+        }
+
+        public List<PokemonCard> LoadAllActiveReleasedCardsMinimum()
+        {
+
             List<PokemonCard> pokemonCards = null;
             try
             {
@@ -110,9 +144,9 @@ namespace LogicLayer
             {
                 throw new ApplicationException("Couldn't load cards ", ex);
             }
-            LoadAllCardsInformation(pokemonCards);
             return pokemonCards;
         }
+
         public List<PokemonCard> LoadAllPokemonCards()
         {
             List<PokemonCard> pokemonCards = null;

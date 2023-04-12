@@ -1,0 +1,9 @@
+﻿@model DataObjects.UserPokemonCard
+
+@Model.Name
+@String.Join(",", Model.Abilities.Select(ability => ability.Name + "\n" + ability.Description))
+@Model.ID
+@Model.UserCardID
+@Model.Active
+@Model.Status
+@String.Join(",", Model.Types)

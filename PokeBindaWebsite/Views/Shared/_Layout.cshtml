@@ -17,9 +17,25 @@
     <title>PokeBinda - @ViewBag.Title</title>
 </head>
 <body>
+    <div class="modal fade" id="modal-popup" tabindex="-1" aria-labelledby="modalPopupLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-loading" style="display:none;">Loading...</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="baseGrid">
         @* A grid seperated into a left and right *@
-        <div class="scrollViewer tabContainer">
+        <div class="scrollViewer tabContainer" id="tab-container-content">
             @* Column 1 of baseGrid containing the tab buttons *@
             @Html.Action("Navigation", "Home")
         </div>
@@ -28,6 +44,36 @@
             <div class="pageHeader">
                 @* Row 1 of layer1Grid *@
                 <h1 class="headerText">@ViewBag.Title</h1>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    AjaxOptions options = new AjaxOptions()
+                    {
+                        HttpMethod = "GET",
+                        UpdateTargetId = "page-content",
+                        LoadingElementId = "loading-div"
+                    };
+                    using (Ajax.BeginForm("Details", "Account", null, options, new { @class = "profile-form" }))
+                    {
+                        <button type="submit" class="profile-button">
+                            <div class="profile-button-image"></div>
+                        </button>
+                    }
+                }
+                else
+                {
+                    AjaxOptions options = new AjaxOptions()
+                    {
+                        HttpMethod = "GET",
+                        UpdateTargetId = "page-content",
+                        LoadingElementId = "loading-div"
+                    };
+                    using (Ajax.BeginForm("Login", "Account", null, options, new { @class = "profile-form" }))
+                    {
+                        <button type="submit" class="profile-button">
+                            <div class="profile-button-image"></div>
+                        </button>
+                    }
+                }
             </div>
             <div class="pageContent">
                 <h5 style="display:none;" id="loading-div">Loading...</h5>

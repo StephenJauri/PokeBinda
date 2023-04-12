@@ -17,5 +17,6 @@ namespace DataAccessInterfaces
         List<PokemonCard> GetAllPokemonCards();
         int UpdatePokemonCard(PokemonCard pokemonCard);
         int InsertPokemonCard(PokemonCard pokemonCard);
+        PokemonCard GetPokemonCard(int card);
     }
 }

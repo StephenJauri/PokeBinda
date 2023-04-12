@@ -1,0 +1,11 @@
+﻿@model PokeBindaWebsite.Models.BrowseModel
+
+<div class="card-display-grid">
+    <div>stff</div>
+    <div class="contentContainer scrollViewer">
+        @foreach (var card in Model.Cards)
+        {
+            @Html.Partial("BrowseCard", card)
+        }
+    </div>
+</div>

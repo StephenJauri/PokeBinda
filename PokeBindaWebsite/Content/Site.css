@@ -24,6 +24,15 @@ body {
     background-image: linear-gradient(190deg, #7A4069 9%, #A7809B 100%);
 }
 
+.modal-content {
+    background-image: linear-gradient(180deg, #513252 0%, #6C526D 74.3%);
+}
+
+.btn-close {
+    opacity: 1;
+    color: #FFC18E;
+    filter: invert(77%) sepia(18%) saturate(878%) hue-rotate(338deg) brightness(101%) contrast(102%);
+}
 
 .tabContainer {
     grid-row: 1;
@@ -31,6 +40,10 @@ body {
     border-right: 2px solid black;
     width: 100%;
 }
+
+    .tabContainer h4 {
+        overflow-wrap: anywhere;
+    }
 
 .tab-form {
     width: 100%;
@@ -113,7 +126,9 @@ body {
 }
 
 .pageHeader {
-    display: table;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
     grid-row: 1;
     grid-column: 1;
     color: #FFC18E;
@@ -123,8 +138,41 @@ body {
 .headerText {
     text-align: center;
     vertical-align: middle;
-    display: table-cell;
+    overflow-wrap: anywhere;
+    grid-row: 1;
+    grid-column: 1;
+    height: min-content;
+    margin: auto;
 }
+
+.profile-form {
+    width: 100px;
+    display: grid;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.profile-button {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    margin: auto;
+}
+
+.profile-button-image {
+    background-image: url("/Images/Icons/profileicon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    aspect-ratio: 1/1;
+    width: 80%;
+    margin: 10%;
+}
+
+.profile-button:hover .profile-button-image {
+    width: 96%;
+    margin: 2%;
+}
+
 
 .layer1Grid {
     grid-row: 1;
@@ -134,4 +182,31 @@ body {
     grid-template-columns: 100%;
     width: 100%;
     height: 100%;
+}
+
+
+
+@media (max-width: 1440px) {
+    .tabContainer h4 {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 720px) {
+    .tabContainer h4 {
+        font-size: 14px;
+    }
+    .headerText {
+        font-size: 20px;
+    }
+
+    .profile-form {
+        width: 75px;
+    }
+}
+
+@media (max-width: 320px) {
+    .tabContainer h4 {
+        font-size: 12px;
+    }
 }

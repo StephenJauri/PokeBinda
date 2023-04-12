@@ -39,6 +39,7 @@
     width: 80%;
     aspect-ratio: 1/1.414;
     margin: 10%;
+    background-image: url("/Images/Cards/default.png");
     background-size: contain;
     background-repeat: no-repeat;
 }

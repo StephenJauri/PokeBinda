@@ -1,7 +1,7 @@
-﻿
+﻿@model PokeBindaWebsite.Models.CollectionModel
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
+@Html.Partial("UserCards", Model.Cards)

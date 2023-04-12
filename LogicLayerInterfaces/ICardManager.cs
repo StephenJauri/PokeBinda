@@ -20,5 +20,6 @@ namespace LogicLayerInterfaces
         void UpdatePokemonCard(PokemonCard pokemonCard);
         void CreatePokemonCard(PokemonCard pokemonCard);
         void CopyImageIntoApplication(string fullPath, string fileName);
+        PokemonCard LoadActiveReleasedCard(int card);
     }
 }
