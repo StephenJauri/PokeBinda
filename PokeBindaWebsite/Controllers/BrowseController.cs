@@ -1,5 +1,6 @@
 ﻿using DataObjects;
 using LogicLayer;
+using Microsoft.AspNet.Identity;
 using PokeBindaWebsite.Models;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace PokeBindaWebsite.Controllers
     public class BrowseController : Controller
     {
         // GET: Browse
+        [HttpGet]
         public async Task<ActionResult> Index(FilterOptionsModel options)
         {
             List<DataObjects.PokemonCard> cards;
@@ -23,7 +25,7 @@ namespace PokeBindaWebsite.Controllers
                 cards =
                     await Task.Run(() =>
                     {
-                        return CardManager.Instance.LoadAllActiveReleasedCards();
+                        return CardManager.Instance.LoadAllActiveReleasedCardsMinimum();
                     });
             }
             catch
@@ -47,6 +49,7 @@ namespace PokeBindaWebsite.Controllers
             return View("BrowseCards", model);
         }
 
+        [HttpGet]
         public async Task<ActionResult> Card(int? card)
         {
             if (!card.HasValue)
@@ -58,11 +61,14 @@ namespace PokeBindaWebsite.Controllers
             PokemonCard model;
             try
             {
-                model = CardManager.Instance.LoadActiveReleasedCard(card.Value);
+                model = 
+                await Task.Run(() =>
+                {
+                    return CardManager.Instance.LoadActiveReleasedCard(card.Value);
+                });
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message + "\n\n" + ex.InnerException.Message);
                 model = null;
             }
 
@@ -84,5 +90,43 @@ namespace PokeBindaWebsite.Controllers
             return View("ViewCard", model);
         }
 
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public async Task<ActionResult> Add(int? card, User user)
+        {
+            if (!card.HasValue)
+            {
+                if (Request.IsAjaxRequest())
+                { return PartialView("Error"); }
+                return View("Error");
+            }
+            UserPokemonCard newCard;
+            try
+            {
+                newCard = 
+                await Task.Run(() =>
+                {
+                    PokemonCard pokemonCard = CardManager.Instance.LoadActiveReleasedCard(card.Value);
+                    var loadedCard = UserManager.Instance.CreateUserPokemonCard(pokemonCard);
+                    UserManager.Instance.AddPokemonCardToCollection(loadedCard, user);
+                    return loadedCard;
+                });
+            }
+            catch (Exception ex)
+            {
+                newCard = null;
+            }
+
+            if (newCard == null)
+            {
+                if (Request.IsAjaxRequest())
+                {
+                    return PartialView("Error");
+                }
+                return View("Error");
+            }
+
+            return RedirectToAction("Card", "Collection", new {card = newCard.UserCardID});
+        }
     }
 }

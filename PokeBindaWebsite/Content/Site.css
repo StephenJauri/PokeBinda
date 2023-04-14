@@ -1,8 +1,8 @@
 ﻿:root {
     --header-min-height: 100px;
-    --tab-bar-min-width: 100px;
+    --tab-bar-min-width: 160px;
     --tab-bar-max-width: 1fr;
-    --content-width: 9fr;
+    --content-width: 14fr;
     --content-min-height: 150px;
 }
 
@@ -83,24 +83,24 @@ body {
 }
 
     /* width */
-    .scrollViewer::-webkit-scrollbar {
+    *::-webkit-scrollbar {
         width: 5px;
     }
 
     /* Track */
-    .scrollViewer::-webkit-scrollbar-track {
-        background: #A7809B;
-    }
+*::-webkit-scrollbar-track {
+    background: #A7809B;
+}
 
     /* Handle */
-    .scrollViewer::-webkit-scrollbar-thumb {
-        background: #513252;
-    }
+*::-webkit-scrollbar-thumb {
+    background: #513252;
+}
 
         /* Handle on hover */
-        .scrollViewer::-webkit-scrollbar-thumb:hover {
-            background: purple;
-        }
+    *::-webkit-scrollbar-thumb:hover {
+        background: purple;
+    }
 
 
 .baseGrid {
@@ -184,7 +184,12 @@ body {
     height: 100%;
 }
 
-
+@media (max-width: 1920px) {
+    :root {
+        --content-width: 11fr;
+        --tab-bar-min-width: 100px;
+    }
+}
 
 @media (max-width: 1440px) {
     .tabContainer h4 {

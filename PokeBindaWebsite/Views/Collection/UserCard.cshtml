@@ -7,8 +7,9 @@
         LoadingElementId = "modal-loading"
     };
 }
-@using (Ajax.BeginForm("Card", "Collection", new { card = Model.UserCardID }, options, new { @class = "card-form", method = "GET" }))
+@using (Ajax.BeginForm("Card", "Collection", null, options, new { @class = "card-form", method = "GET" }))
 {
+    @Html.Hidden("card", Model.UserCardID)
     <button type="submit" class="card-button" data-bs-toggle="modal" data-bs-target="#modal-popup">
         <div class="card-image" style="background-image: url('/Images/Cards/@Model.ImageName')"></div>
         <h3 class="card-name">@Model.Name</h3>

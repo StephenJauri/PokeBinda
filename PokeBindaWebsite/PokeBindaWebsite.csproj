@@ -224,6 +224,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\card-grid.css" />
     <Content Include="Content\home.css" />
+    <Content Include="Content\view-card.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -380,6 +381,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\view-user-card.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -424,6 +426,8 @@
     <Content Include="Views\Shared\Unauthorized.cshtml" />
     <Content Include="Views\Collection\ViewUserCard.cshtml" />
     <Content Include="Views\Browse\ViewCard.cshtml" />
+    <Content Include="Views\Shared\Pokemon.cshtml" />
+    <Content Include="Views\Shared\Ability.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

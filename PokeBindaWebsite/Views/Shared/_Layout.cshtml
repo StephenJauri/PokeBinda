@@ -12,6 +12,7 @@
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     <link href="~/Content/home.css" rel="stylesheet" />
     <link href="~/Content/card-grid.css" rel="stylesheet" />
+    <link href="~/Content/view-card.css" rel="stylesheet" />
     @RenderSection("styles", required: false)
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PokeBinda - @ViewBag.Title</title>
@@ -52,7 +53,7 @@
                         UpdateTargetId = "page-content",
                         LoadingElementId = "loading-div"
                     };
-                    using (Ajax.BeginForm("Details", "Account", null, options, new { @class = "profile-form" }))
+                    using (Ajax.BeginForm("Details", "Account", null, options, new { @class = "profile-form", method = "GET" }))
                     {
                         <button type="submit" class="profile-button">
                             <div class="profile-button-image"></div>
@@ -67,7 +68,7 @@
                         UpdateTargetId = "page-content",
                         LoadingElementId = "loading-div"
                     };
-                    using (Ajax.BeginForm("Login", "Account", null, options, new { @class = "profile-form" }))
+                    using (Ajax.BeginForm("Login", "Account", null, options, new { @class = "profile-form", method = "GET" }))
                     {
                         <button type="submit" class="profile-button">
                             <div class="profile-button-image"></div>
@@ -83,7 +84,7 @@
             </div>
         </div>
     </div>
-
+    <script src="~/Scripts/view-user-card.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

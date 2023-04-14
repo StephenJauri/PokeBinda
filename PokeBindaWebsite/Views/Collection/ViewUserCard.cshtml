@@ -1,9 +1,69 @@
 ﻿@model DataObjects.UserPokemonCard
 
-@Model.Name
-@String.Join(",", Model.Abilities.Select(ability => ability.Name + "\n" + ability.Description))
-@Model.ID
-@Model.UserCardID
-@Model.Active
-@Model.Status
-@String.Join(",", Model.Types)
+<div class="surround">
+    <div class="view-card-two-part-container">
+        <div class="view-card-container-one">
+            <div class="view-card-header">
+                <h3 class="view-card-header-text">@(Model.Name + (Model.HP != null ? " " + Model.HP.Value : ""))</h3>
+                @{
+                    AjaxOptions options = new AjaxOptions()
+                    {
+                        LoadingElementId = "modal-loading",
+                        HttpMethod = "POST",
+                        UpdateTargetId = "modal-body"
+                    };
+                }
+                @using (Ajax.BeginForm("ToggleFavorite", "Collection", null, options, new { @class = "view-card-toggle-favorite-form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("card", Model.ID)
+                    <button type="submit" class="view-card-toggle-favorite-button">
+                        <div class="view-card-toggle-favorite-image"></div>
+                    </button>
+                }
+            </div>
+            <div class="dashed-border"></div>
+            <div class="view-card-image" style="background-image:url('/Images/Cards/@Model.ImageName');">
+
+            </div>
+        </div>
+        <div class="view-card-container-two">
+            <div class="view-card-pokemon">
+                <h3 class="view-card-pokemon-label">Pokemon</h3>
+                <div class="view-card-pokemon-container">
+                    <h4 class="view-card-pokemon-gen-label">Gen</h4>
+                    <h4 class="view-card-pokemon-pokedex-number-label">Pokedex #</h4>
+                    <h4 class="view-card-pokemon-name-label">Name</h4>
+                    @foreach (var pokemon in Model.Pokemon)
+                    {
+                        @Html.Partial("Pokemon", pokemon)
+                    }
+
+                </div>
+                <div class="dashed-border"></div>
+            </div>
+            <div class="view-card-abilities">
+                <h3 class="view-card-abilities-label">Abilities</h3>
+                <div class="view-card-abilities-container">
+                    @{
+                        foreach (var ability in Model.Abilities)
+                        {
+                            @Html.Partial("Ability", ability)
+                            <div class="dashed-border"></div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="view-card-labels-and-details">
+                <h4 class="view-card-types-label">Type(s): </h4>
+                <h5 class="view-card-types">@String.Join(", ", Model.Types)</h5>
+                <h4 class="view-card-tags-label">Tag(s): </h4>
+                <h5 class="view-card-tags">@String.Join(", ", Model.Tags)</h5>
+                <h4 class="view-card-set-number-label">Set #: </h4>
+                <h5 class="view-card-set-number">@Model.SetNumber</h5>
+                <h4 class="view-card-set-number-label">Release: </h4>
+                <h5 class="view-card-set-number">@Model.ReleaseYear.ToString("MM/dd/yyyy")</h5>
+            </div>
+        </div>
+    </div>
+</div>
