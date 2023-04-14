@@ -334,6 +334,70 @@ namespace DataAccesslayer
             return pokemonCardTypes;
         }
 
+        public PokemonCard GetPokemonCard(int card)
+        {
+            PokemonCard pokemonCard;
+
+            // ADO.NET needs a connection
+            DBConnection connectionFactory = new DBConnection();
+            SqlConnection conn = connectionFactory.GetConnection();
+
+            string cmdText = "sp_select_active_released_pokemon_card";
+
+            SqlCommand cmd = new SqlCommand(cmdText, conn);
+            cmd.Parameters.Add("@CardID", SqlDbType.Int).Value = card;
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            try
+            {
+                conn.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        pokemonCard = new PokemonCard()
+                        {
+                            ID = reader.GetInt32(0),
+                            Name = reader.GetString(1),
+                            Note = reader.GetString(2),
+                            ReleaseYear = reader.GetDateTime(4),
+                            SetNumber = reader.GetString(5),
+                            ImageName = reader.GetString(6),
+                            Released = reader.GetBoolean(7),
+                            Active = reader.GetBoolean(8),
+                            Abilities = new List<Ability>(),
+                            Tags = new List<string>(),
+                            Types = new List<string>(),
+                            Pokemon = new List<Pokemon>()
+                        };
+                        if (!reader.IsDBNull(3))
+                        {
+                            pokemonCard.HP = reader.GetInt32(3);
+                        }
+                        else
+                        {
+                            pokemonCard.HP = null;
+                        }
+                    }
+                    else
+                    {
+                        throw new ApplicationException("No card with the id" + card);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return pokemonCard;
+        }
+
         public int InsertPokemonCard(PokemonCard pokemonCard)
         {
             int ID = 0;

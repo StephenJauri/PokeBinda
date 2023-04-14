@@ -13,6 +13,18 @@ namespace LogicLayer
 {
     public class UserManager : IUserManager
     {
+        private static UserManager instance;
+        public static UserManager Instance { 
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new UserManager(new CardManager());
+                }
+                return instance;
+            }
+        }
+        
         private IUserAccessor _userAccessor = null;
         private IUserGroupAccessor _userGroupAccessor = null;
         private IUserPokemonCardAccessor _userPokemonCardAccessor = null;

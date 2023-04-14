@@ -12,6 +12,18 @@ namespace LogicLayer
 {
     public class LookupManager : ILookupManager
     {
+        private static LookupManager instance;
+        public static LookupManager Instance { 
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new LookupManager();
+                }
+                return instance;
+            }
+        }
+
         private ILookupAccessor _lookupAccessor = null;
         private List<Pokemon> allPokemon;
         private List<int> allGens;

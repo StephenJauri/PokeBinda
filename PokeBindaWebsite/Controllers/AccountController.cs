@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -172,7 +173,8 @@ namespace PokeBindaWebsite.Controllers
                             GivenName = model.GivenName,
                             FamilyName = model.FamilyName,
                             UserName = model.Email,
-                            Birthday = model.Birthday,
+                            //Fix
+                            Birthday = DateTime.Today,
                             Email = model.Email,
                             UserID = newUserID
                         };
@@ -186,13 +188,20 @@ namespace PokeBindaWebsite.Controllers
                         AddErrors(result);
                     }
                 }
-                catch
+                catch (Exception ex)
                 {
+                    Debug.WriteLine(ex.Message + "\n\n" + ex.InnerException.Message + "\n\n" + ex.InnerException.InnerException.Message);
                     return View(model);
                 }
             }
 
             return View(model);
+        }
+
+
+        public async Task<ActionResult> Details()
+        {
+            return View();
         }
 
         //
@@ -288,6 +297,7 @@ namespace PokeBindaWebsite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            Session["User"] = null;
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }

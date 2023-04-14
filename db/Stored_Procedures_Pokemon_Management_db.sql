@@ -339,6 +339,25 @@ AS
 GO
 
 
+print '' print '*** creating sp_select_active_released_pokemon_card'
+GO
+CREATE PROCEDURE [dbo].[sp_select_active_released_pokemon_card]
+(
+	@CardID	[INT]
+)
+AS
+	BEGIN
+		SELECT [PokemonCardID],[PokemonCardName],[PokemonCardNote],[PokemonCardHP],[PokemonCardReleaseYear],[PokemonCardSetNumber],	
+               [PokemonCardImageName],[PokemonCardReleased],[PokemonCardActive]	
+		FROM [PokemonCard]
+		WHERE [PokemonCardActive] = 1
+			AND [PokemonCardReleased] = 1
+			AND [PokemonCardID] = @CardID
+	END
+GO
+
+
+
 print '' print '*** creating sp_update_card_status_by_statusid_and_user_cardid'
 GO
 CREATE PROCEDURE [dbo].[sp_update_card_status_by_statusid_and_user_cardid]

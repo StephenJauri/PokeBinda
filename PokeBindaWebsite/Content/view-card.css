@@ -1,0 +1,317 @@
+﻿.surround {
+    container-type: inline-size;
+    container-name: viewcard;
+}
+
+.view-card-two-part-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content min-content;
+    text-align: center;
+    overflow-wrap: anywhere;
+    max-width: 1440px;
+    width: 100%;
+    margin: auto;
+}
+
+.view-card-container-one {
+    grid-row: 1;
+    grid-column: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    vertical-align: middle;
+    height: min-content;
+    margin: auto 0;
+}
+
+
+.view-card-container-two {
+    grid-row: 2;
+    grid-column: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    vertical-align: middle;
+    height: min-content;
+    margin: auto 0;
+}
+
+
+    .view-card-header {
+        grid-row: 1;
+        display: grid;
+        grid-template-rows: min-content;
+        grid-template-columns: 75px 1fr 75px;
+    }
+
+    .view-card-header-text {
+        grid-column: 2;
+        text-align: center;
+        margin: auto;
+        height: min-content;
+        border-bottom: none;
+        padding: 0 5px;
+    }
+
+.view-card-add-form {
+    vertical-align: middle;
+    grid-column: 3;
+    display: grid;
+}
+
+.view-card-add-button {
+    background: none;
+    border: none;
+    width: 100%;
+    margin: auto;
+    vertical-align: middle;
+}
+
+.view-card-add-image {
+    background-image: url('/Images/Icons/plusicon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 80%;
+    margin: 10%;
+    aspect-ratio: 1/1;
+}
+
+.view-card-toggle-favorite-form {
+    vertical-align: middle;
+    grid-column: 3;
+    display: grid;
+}
+
+.view-card-toggle-favorite-button {
+    background: none;
+    border: none;
+    width: 100%;
+    margin: auto;
+    vertical-align: middle;
+}
+
+.view-card-toggle-favorite-image {
+    background-image: url('/Images/Icons/notfavoriteicon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 80%;
+    margin: 10%;
+    aspect-ratio: 1/1;
+}
+
+    .view-card-add-button:hover .view-card-add-image {
+        width: 96%;
+        margin: 2%;
+    }
+
+    .view-card-image {
+        grid-row: 3;
+        background-image: url("/Images/Cards/default.png");
+        width: 90%;
+        aspect-ratio: 1/1.414;
+        margin: 15px auto;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .view-card-pokemon {
+        grid-row: 1;
+        display: grid;
+        grid-template-rows: min-content min-content;
+        max-width: 720px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+        .view-card-pokemon * {
+            margin: 2px;
+        }
+
+    .view-card-pokemon-label {
+        grid-row: 1;
+        padding-bottom: 2px;
+        border-bottom: 1px solid #513252;
+    }
+
+
+    .view-card-pokemon-container {
+        grid-row: 2;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-rows: min-content;
+    }
+
+    .view-card-pokemon-gen-label {
+        grid-row: 1;
+        grid-column: 1;
+    }
+
+    .view-card-pokemon-pokedex-number-label {
+        grid-row: 1;
+        grid-column: 2;
+        border-right: 1px solid #513252;
+        border-left: 1px solid #513252;
+    }
+
+    .view-card-pokemon-name-label {
+        grid-row: 1;
+        grid-column: 3;
+    }
+
+    .view-card-border {
+        border-bottom: 1px solid #513252;
+        margin: 0px 5px;
+    }
+
+    .view-card-pokemon-gen {
+        grid-column: 1;
+    }
+
+    .view-card-pokemon-pokedex-number {
+        grid-column: 2;
+        border-right: 1px solid #513252;
+        border-left: 1px solid #513252;
+    }
+
+    .view-card-pokemon-name {
+        grid-column: 3;
+    }
+
+    .view-card-abilities {
+        grid-row: 2;
+        margin: 10px 0;
+    }
+
+    .dashed-border {
+        border: 1px dashed #513252;
+    }
+
+    .view-card-abilities-label {
+        border-bottom: 1px solid #513252;
+    }
+
+    .view-card-abilities-container {
+    }
+
+    .ability-container {
+        margin: 10px 0;
+    }
+
+    .ability-description {
+    }
+
+    .view-card-labels-and-details {
+        grid-row: 3;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: min-content;
+    }
+
+        .view-card-labels-and-details * {
+            height: min-content;
+            margin: auto auto 0 auto;
+        }
+
+        .view-card-labels-and-details h4 {
+            text-align: right;
+            vertical-align: middle;
+            padding-right: 1px;
+        }
+
+        .view-card-labels-and-details h5 {
+            text-align: left;
+            vertical-align: middle;
+            padding-left: 1px;
+        }
+
+    .view-card-types-label {
+    }
+
+    .view-card-types {
+    }
+
+    .view-card-tags-label {
+    }
+
+    .view-card-tags {
+    }
+
+    .view-card-set-number-label {
+    }
+
+    .view-card-set-number {
+    }
+
+    .view-card-set-number-label {
+    }
+
+    .view-card-set-number {
+    }
+
+
+
+@container viewcard (max-width: 480px) {
+
+    h5 {
+        font-size: 16px;
+    }
+
+    h4 {
+        font-size: 18px;
+    }
+
+    h3 {
+        font-size: 22px;
+    }
+}
+
+@container viewcard (max-width: 320px) {
+
+    .view-card-header {
+        grid-template-columns: 50px 1fr 50px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+    h4 {
+        font-size: 14px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+}
+
+@container viewcard (min-width: 720px) {
+    .view-card-two-part-container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+    }
+
+    .view-card-container-one {
+        grid-row: 1;
+        grid-column: 1;
+    }
+
+    .view-card-container-two {
+        grid-row: 1;
+        grid-column: 2;
+    }
+}
+
+@container viewcard (min-width: 980px) {
+    .view-card-two-part-container {
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 1fr;
+    }
+}
+
+@container viewcard (min-width: 1440px) {
+    .view-card-two-part-container {
+        grid-template-columns: 1fr 4fr;
+        grid-template-rows: 1fr;
+    }
+}

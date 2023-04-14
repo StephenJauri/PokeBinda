@@ -5,7 +5,7 @@
 {
     Action = "Group",
     Controller = "Collection",
-    Image = "favoriteicon.png",
+    Image = "favoritegroupicon.png",
     Name = Model.FavoriteGroup.Name,
     RouteValues = new { group = Model.FavoriteGroup.ID }
 })
@@ -44,4 +44,12 @@
     Controller = "Collection",
     Image = "plusicon.png",
     Name = "New Group"
+})
+
+@Html.Partial("Tab", new PokeBindaWebsite.Models.TabModel()
+{
+    Action = "Manage",
+    Controller = "Collection",
+    Image = "penicon.png",
+    Name = "Manage Groups"
 })
