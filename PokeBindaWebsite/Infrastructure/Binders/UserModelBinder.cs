@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity.Owin;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Threading.Tasks;
 
 namespace PokeBindaWebsite.Infrastructure.Binders
 {
@@ -13,6 +14,7 @@ namespace PokeBindaWebsite.Infrastructure.Binders
     {
         private const string sessionKey = "User";
 
+        
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
             DataObjects.User user = null;
@@ -32,10 +34,6 @@ namespace PokeBindaWebsite.Infrastructure.Binders
                         {
 
                         }
-                    }
-                    else
-                    {
-
                     }
                 }
             }

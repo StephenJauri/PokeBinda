@@ -1,6 +1,20 @@
-﻿.surround {
+﻿:root {
+    --status-loading-max-width: 75px;
+}
+
+.surround {
     container-type: inline-size;
     container-name: viewcard;
+}
+
+.button-disabled *
+{
+    opacity: .5;
+}
+
+.button-disabled:hover *
+{
+    opacity: .5;
 }
 
 .view-card-two-part-container {
@@ -39,7 +53,6 @@
 
 
     .view-card-header {
-        grid-row: 1;
         display: grid;
         grid-template-rows: min-content;
         grid-template-columns: 75px 1fr 75px;
@@ -92,7 +105,6 @@
 }
 
 .view-card-toggle-favorite-image {
-    background-image: url('/Images/Icons/notfavoriteicon.png');
     background-size: contain;
     background-repeat: no-repeat;
     width: 80%;
@@ -100,13 +112,20 @@
     aspect-ratio: 1/1;
 }
 
-    .view-card-add-button:hover .view-card-add-image {
-        width: 96%;
-        margin: 2%;
-    }
+.not-favorite {
+    background-image: url('/Images/Icons/notfavoriteicon.png');
+}
+
+.is-favorite {
+    background-image: url('/Images/Icons/favoriteicon.png');
+}
+
+.view-card-toggle-favorite-button:hover .view-card-toggle-favorite-image {
+    width: 96%;
+    margin: 2%;
+}
 
     .view-card-image {
-        grid-row: 3;
         background-image: url("/Images/Cards/default.png");
         width: 90%;
         aspect-ratio: 1/1.414;
@@ -115,14 +134,174 @@
         background-repeat: no-repeat;
     }
 
-    .view-card-pokemon {
-        grid-row: 1;
-        display: grid;
-        grid-template-rows: min-content min-content;
-        max-width: 720px;
-        width: 100%;
-        margin: 0 auto;
+
+.view-card-status-form {
+    display: grid;
+    grid-template-rows: min-content;
+    width: 100%;
+    grid-template-columns: minmax(50px,1fr) 4fr min-content;
+    /*grid-template-columns: minmax(50px,75px) 1fr minmax(50px,75px);*/
+}
+
+.view-card-status-dropdown {
+    background: none;
+    border-radius: 5px;
+    border: 1px solid #FFC18E;
+    height: 40px;
+    margin: 5px 10px;
+    width: 90%;
+}
+
+.view-card-status-dropdown:hover {
+    border: 1px solid #FFC18EA0;
+}
+
+
+    .view-card-status-dropdown * {
+        background: #513252;
     }
+
+.view-card-status-dropdown-menu
+{
+    width: 90%;
+}
+.view-card-status-update-button {
+    background: none;
+    border: none;
+    width: 50px;
+    margin: auto;
+}
+
+#dropdown-text {
+    background: none;
+    margin: auto inherit;
+}
+
+.dropdown-toggle {
+    color: #FFC18E;
+    overflow-wrap: break-word;
+}
+
+.dropdown-menu {
+    background-image: linear-gradient(190deg, #7A4069 9%, #A7809B 100%);
+}
+
+.dropdown-item {
+    color:#FFC18E;
+}
+.dropdown-item:hover {
+    border: 1px solid #FFC18E;
+    background: none;
+    color: #FFC18E;
+}
+
+.view-card-status-label {
+    margin: auto 0;
+    padding-right: 2px;
+    text-align: right;
+}
+
+
+.view-card-status-update-image {
+    background-image: url("/Images/Icons/saveicon.png");
+    width: 80%;
+    margin: 10%;
+    aspect-ratio: 1/1;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.view-card-status-update-button:hover .view-card-status-update-image {
+    width: 96%;
+    margin: 2%;
+}
+.view-card-status-update-success {
+    margin: 0 auto 2px auto;
+    overflow: hidden;
+    vertical-align: middle;
+    margin: auto auto auto 0;
+}
+
+#status-success {
+    opacity: 0;
+    height: 30px;
+    width: 0;
+    line-height: 30px;
+}
+
+#status-success.done {
+    animation: anime 1500ms forwards;
+}
+
+#status-success.show {
+    animation: appear 125ms forwards;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        width: 0;
+    }
+
+    100% {
+        opacity: 1;
+        width: var(--status-loading-max-width);
+    }
+}
+
+@keyframes anime {
+    0% {
+        opacity: 1;
+        width: var(--status-loading-max-width);
+    }
+
+    50% {
+        opacity: 1;
+        width: var(--status-loading-max-width);
+    }
+
+    100% {
+        opacity: 0;
+        width: 0px;
+    }
+}
+
+@keyframes appeartwo {
+    0% {
+        opacity: 0;
+        width: 0;
+    }
+
+    100% {
+        opacity: 1;
+        width: 50px;
+    }
+}
+
+@keyframes animetwo {
+    0% {
+        opacity: 1;
+        width: 50px;
+    }
+
+    50% {
+        opacity: 1;
+        width: 50px;
+    }
+
+    100% {
+        opacity: 0;
+        width: 0px;
+    }
+}
+
+.view-card-pokemon {
+    display: grid;
+    grid-template-rows: min-content min-content;
+    max-width: 720px;
+    width: 100%;
+    margin: 0 auto;
+}
 
         .view-card-pokemon * {
             margin: 2px;
@@ -179,7 +358,6 @@
     }
 
     .view-card-abilities {
-        grid-row: 2;
         margin: 10px 0;
     }
 
@@ -202,58 +380,155 @@
     }
 
     .view-card-labels-and-details {
-        grid-row: 3;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-auto-rows: min-content;
+        margin-bottom: 5px;
     }
 
-        .view-card-labels-and-details * {
-            height: min-content;
-            margin: auto auto 0 auto;
-        }
-
-        .view-card-labels-and-details h4 {
-            text-align: right;
-            vertical-align: middle;
-            padding-right: 1px;
-        }
-
-        .view-card-labels-and-details h5 {
-            text-align: left;
-            vertical-align: middle;
-            padding-left: 1px;
-        }
-
-    .view-card-types-label {
+    .view-card-labels-and-details * {
+        height: min-content;
+        margin: auto auto 0 auto;
     }
 
-    .view-card-types {
+    .view-card-labels-and-details h4 {
+        text-align: right;
+        vertical-align: middle;
+        padding-right: 1px;
     }
 
-    .view-card-tags-label {
+    .view-card-labels-and-details h5 {
+        text-align: left;
+        vertical-align: middle;
+        padding-left: 1px;
     }
 
-    .view-card-tags {
-    }
+.view-card-types-label {
+}
 
-    .view-card-set-number-label {
-    }
+.view-card-types {
+}
 
-    .view-card-set-number {
-    }
+.view-card-tags-label {
+}
 
-    .view-card-set-number-label {
-    }
+.view-card-tags {
+}
 
-    .view-card-set-number {
-    }
+.view-card-set-number-label {
+}
+
+.view-card-set-number {
+}
+
+.view-card-set-number-label {
+}
+
+.view-card-set-number {
+}
+
+.view-card-group-buttons {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    vertical-align: middle;
+    margin-top: 16px;
+}
+.group-dropdown {
+    height: 75px;
+}
+
+.view-card-add-to-group-form {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    vertical-align: middle;
+    height: min-content;
+}
+
+.view-card-add-to-group-dropdown {
+    width: 75px;
+    height: min-content;
+    background: none;
+    border: none;
+}
+
+.view-card-add-to-group-image {
+    width: 80%;
+    margin: 10%;
+    background-image: url("/Images/Icons/addbookmarkicon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    aspect-ratio: 1/1;
+}
+
+.view-card-add-to-group-dropdown:hover .view-card-add-to-group-image {
+    width: 96%;
+    margin: 2%;
+}
+
+.view-card-remove-from-group-form {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    vertical-align: middle;
+    height: min-content;
+}
+
+.view-card-remove-from-group-dropdown {
+    width: 75px;
+    height: min-content;
+    background: none;
+    border: none;
+}
+
+.view-card-remove-from-group-image {
+    width: 80%;
+    margin: 10%;
+    background-image: url("/Images/Icons/removebookmarkicon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    aspect-ratio: 1/1;
+}
+
+.view-card-remove-from-group-dropdown:hover .view-card-remove-from-group-image {
+    width: 96%;
+    margin: 2%;
+}
+
+.view-card-remove-form {
+    grid-column: 3;
+    grid-row: 1;
+    width: 100%;
+    vertical-align: middle;
+    height: min-content;
+}
+
+.view-card-remove-button {
+    width: 75px;
+    height: min-content;
+    background: none;
+    border: none;
+}
+
+.view-card-remove-image {
+    width: 80%;
+    margin: 10%;
+    background-image: url("/Images/Icons/trashicon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    aspect-ratio: 1/1;
+}
+
+.view-card-remove-button:hover .view-card-remove-image {
+    width: 96%;
+    margin: 2%;
+}
 
 
 
 @container viewcard (max-width: 480px) {
-
-    h5 {
+    h5, .dropdown-toggle {
         font-size: 16px;
     }
 
@@ -272,7 +547,23 @@
         grid-template-columns: 50px 1fr 50px;
     }
 
-    h5 {
+    .group-dropdown {
+        height: 50px;
+    }
+
+    .view-card-remove-from-group-dropdown {
+        width: 50px;
+    }
+
+    .view-card-remove-button {
+        width: 50px;
+    }
+
+    .view-card-add-to-group-dropdown {
+        width: 50px;
+    }
+
+    h5, .dropdown-toggle {
         font-size: 12px;
     }
 
@@ -282,6 +573,15 @@
 
     h3 {
         font-size: 16px;
+    }
+
+
+    #status-success.done {
+        animation: animetwo 1500ms forwards;
+    }
+
+    #status-success.show {
+        animation: appeartwo 125ms forwards;
     }
 }
 
@@ -304,14 +604,14 @@
 
 @container viewcard (min-width: 980px) {
     .view-card-two-part-container {
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 2fr 3fr;
         grid-template-rows: 1fr;
     }
 }
 
 @container viewcard (min-width: 1440px) {
     .view-card-two-part-container {
-        grid-template-columns: 1fr 4fr;
+        grid-template-columns: 1fr 2fr;
         grid-template-rows: 1fr;
     }
 }

@@ -8,11 +8,11 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    <script src="~/Scripts/jquery-3.4.1.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     <link href="~/Content/home.css" rel="stylesheet" />
     <link href="~/Content/card-grid.css" rel="stylesheet" />
     <link href="~/Content/view-card.css" rel="stylesheet" />
+    <link href="~/Content/group-management.css" rel="stylesheet" />
     @RenderSection("styles", required: false)
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PokeBinda - @ViewBag.Title</title>
@@ -84,7 +84,9 @@
             </div>
         </div>
     </div>
-    <script src="~/Scripts/view-user-card.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/site.js"></script>
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

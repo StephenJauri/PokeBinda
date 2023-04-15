@@ -196,12 +196,16 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BrowseModel.cs" />
+    <Compile Include="Models\CardStatusModel.cs" />
     <Compile Include="Models\CollectionModel.cs" />
     <Compile Include="Models\FilterOptionsModel.cs" />
     <Compile Include="Models\GroupModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\AddRemoveGroupsModel.cs" />
+    <Compile Include="Models\NewGroupModel.cs" />
     <Compile Include="Models\TabModel.cs" />
+    <Compile Include="Models\ViewUserCardModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -223,6 +227,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\card-grid.css" />
+    <Content Include="Content\group-management.css" />
     <Content Include="Content\home.css" />
     <Content Include="Content\view-card.css" />
     <Content Include="favicon.ico" />
@@ -381,7 +386,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\view-user-card.js" />
+    <Content Include="Scripts\site.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -428,6 +433,10 @@
     <Content Include="Views\Browse\ViewCard.cshtml" />
     <Content Include="Views\Shared\Pokemon.cshtml" />
     <Content Include="Views\Shared\Ability.cshtml" />
+    <Content Include="Views\Shared\CardStatus.cshtml" />
+    <Content Include="Views\Shared\RemoveGroups.cshtml" />
+    <Content Include="Views\Shared\AddGroups.cshtml" />
+    <Content Include="Views\Collection\NewGroup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

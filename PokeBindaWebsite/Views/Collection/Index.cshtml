@@ -4,4 +4,5 @@
     ViewBag.Title = "Index";
 }
 
+@Html.Hidden("currentGroup", "all", new { id = "currently-viewing-group" })
 @Html.Partial("UserCards", Model.Cards)

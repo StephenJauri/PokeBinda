@@ -1,29 +1,35 @@
-﻿@model DataObjects.UserPokemonCard
+﻿@model PokeBindaWebsite.Models.ViewUserCardModel
 
 <div class="surround">
     <div class="view-card-two-part-container">
         <div class="view-card-container-one">
             <div class="view-card-header">
-                <h3 class="view-card-header-text">@(Model.Name + (Model.HP != null ? " " + Model.HP.Value : ""))</h3>
+                <h3 class="view-card-header-text">@(Model.Card.Name + (Model.Card.HP != null ? " " + Model.Card.HP.Value : ""))</h3>
                 @{
-                    AjaxOptions options = new AjaxOptions()
+                    AjaxOptions favoriteToggleOptions = new AjaxOptions()
                     {
                         LoadingElementId = "modal-loading",
+                        LoadingElementDuration = 200,
                         HttpMethod = "POST",
-                        UpdateTargetId = "modal-body"
+                        OnSuccess = "updateGroupInfo"
                     };
                 }
-                @using (Ajax.BeginForm("ToggleFavorite", "Collection", null, options, new { @class = "view-card-toggle-favorite-form" }))
+                @using (Ajax.BeginForm("ToggleFavorite", "Collection", null, favoriteToggleOptions, new { @class = "view-card-toggle-favorite-form" }))
                 {
                     @Html.AntiForgeryToken()
-                    @Html.Hidden("card", Model.ID)
-                    <button type="submit" class="view-card-toggle-favorite-button">
-                        <div class="view-card-toggle-favorite-image"></div>
+                    @Html.Hidden("card", Model.Card.ID)
+                    <button type="submit" class="view-card-toggle-favorite-button" id="toggle-favorite-button" >
+                        <div id="favorite-card-image" class='view-card-toggle-favorite-image @(Model.IsFavorite == true ? "is-favorite" : "not-favorite")'></div>
                     </button>
                 }
             </div>
             <div class="dashed-border"></div>
-            <div class="view-card-image" style="background-image:url('/Images/Cards/@Model.ImageName');">
+            <div class="view-card-status" id="view-card-status">
+                @Html.Partial("CardStatus", new PokeBindaWebsite.Models.CardStatusModel()
+                       { SelectedStatus = Model.Card.Status, Card = Model.Card.UserCardID, Statuses = Model.Statuses })
+            </div>
+            <div class="dashed-border"></div>
+            <div class="view-card-image" style="background-image:url('/Images/Cards/@Model.Card.ImageName');">
 
             </div>
         </div>
@@ -34,7 +40,7 @@
                     <h4 class="view-card-pokemon-gen-label">Gen</h4>
                     <h4 class="view-card-pokemon-pokedex-number-label">Pokedex #</h4>
                     <h4 class="view-card-pokemon-name-label">Name</h4>
-                    @foreach (var pokemon in Model.Pokemon)
+                    @foreach (var pokemon in Model.Card.Pokemon)
                     {
                         @Html.Partial("Pokemon", pokemon)
                     }
@@ -46,7 +52,7 @@
                 <h3 class="view-card-abilities-label">Abilities</h3>
                 <div class="view-card-abilities-container">
                     @{
-                        foreach (var ability in Model.Abilities)
+                        foreach (var ability in Model.Card.Abilities)
                         {
                             @Html.Partial("Ability", ability)
                             <div class="dashed-border"></div>
@@ -56,13 +62,42 @@
             </div>
             <div class="view-card-labels-and-details">
                 <h4 class="view-card-types-label">Type(s): </h4>
-                <h5 class="view-card-types">@String.Join(", ", Model.Types)</h5>
+                <h5 class="view-card-types">@String.Join(", ", Model.Card.Types)</h5>
                 <h4 class="view-card-tags-label">Tag(s): </h4>
-                <h5 class="view-card-tags">@String.Join(", ", Model.Tags)</h5>
+                <h5 class="view-card-tags">@String.Join(", ", Model.Card.Tags)</h5>
                 <h4 class="view-card-set-number-label">Set #: </h4>
-                <h5 class="view-card-set-number">@Model.SetNumber</h5>
+                <h5 class="view-card-set-number">@Model.Card.SetNumber</h5>
                 <h4 class="view-card-set-number-label">Release: </h4>
-                <h5 class="view-card-set-number">@Model.ReleaseYear.ToString("MM/dd/yyyy")</h5>
+                <h5 class="view-card-set-number">@Model.Card.ReleaseYear.ToString("MM/dd/yyyy")</h5>
+            </div>
+            <div class="dashed-border"></div>
+            <div class="view-card-group-buttons">
+                @Html.Partial("AddGroups", new PokeBindaWebsite.Models.AddRemoveGroupsModel()
+                {
+                    Groups = Model.AddGroups,
+                    Card = Model.Card.UserCardID
+                })
+                @Html.Partial("RemoveGroups", new PokeBindaWebsite.Models.AddRemoveGroupsModel()
+                {
+                    Groups = Model.RemoveGroups,
+                    Card = Model.Card.UserCardID
+                })
+                @{
+                    AjaxOptions deleteOptions = new AjaxOptions()
+                    {
+                        LoadingElementId = "modal-loading",
+                        HttpMethod = "POST",
+                        OnSuccess = "cardRemoved"
+                    };
+                }
+                @using (Ajax.BeginForm("RemoveCard", "Collection", null, deleteOptions, new { @class = "view-card-remove-form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("card", Model.Card.ID)
+                    <button type="submit" class="view-card-remove-button"  data-bs-dismiss="modal" >
+                        <div class='view-card-remove-image'></div>
+                    </button>
+                }
             </div>
         </div>
     </div>

@@ -140,5 +140,13 @@ namespace LogicLayer
         {
             return this.allTags;
         }
+        public List<string> GetAllStatuses()
+        {
+            return this.allStatuses;
+        }
+        public List<Pokemon> GetAllPokemon()
+        {
+            return this.allPokemon;
+        }
     }
 }

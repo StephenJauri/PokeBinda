@@ -28,6 +28,11 @@ body {
     background-image: linear-gradient(180deg, #513252 0%, #6C526D 74.3%);
 }
 
+.dropdown-menu {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
 .btn-close {
     opacity: 1;
     color: #FFC18E;

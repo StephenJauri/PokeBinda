@@ -1,0 +1,31 @@
+﻿.new-group-container {
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+}
+
+.new-group-header {
+    text-align:center;
+}
+
+.new-group-textbox {
+    width: 100%;
+    max-width: 400px;
+    background: none;
+    border: 1px solid #FFC18E;
+    border-radius: 5px;
+}
+
+.new-group-create-button {
+    width: 80%;
+    max-width: 400px;
+    margin: 10px 10%;
+    background: none;
+    border: 1px solid #FFC18E;
+    border-radius: 5px;
+}
+
+
+.new-group-create-button:hover, .new-group-textbox:hover {
+    border: 1px solid #FFC18EA0;
+}

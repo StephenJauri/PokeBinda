@@ -11,6 +11,6 @@ namespace PokeBindaWebsite.Models
         public string Controller { get; set; }
         public string Action { get; set; }
         public string Image { get; set; }
-        public object RouteValues { get; set; }
+        public Dictionary<string, object> Hiddens { get; set; } = new Dictionary<string, object>();
     }
 }

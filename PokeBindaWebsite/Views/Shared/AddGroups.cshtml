@@ -1,0 +1,32 @@
+﻿@model PokeBindaWebsite.Models.AddRemoveGroupsModel
+
+@{
+    AjaxOptions options = new AjaxOptions()
+    {
+        HttpMethod = "Post",
+        LoadingElementId = "modal-loading",
+        LoadingElementDuration = 200,
+        OnSuccess = "updateGroupInfo"
+    };
+}
+
+@using (Ajax.BeginForm("AddCardToGroup", "Collection", null, options, new { @class = "view-card-add-to-group-form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.Hidden("card", Model.Card)
+    <div class="dropdown group-dropdown">
+        <button class="view-card-add-to-group-dropdown" id="add-to-group-button" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="view-card-add-to-group-image"></div>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="addToGroupDropdownMenuButton" id="add-dropdown-buttons">
+            @if (Model.Groups.Count() == 0)
+            {
+                <h5>Empty</h5>
+            }
+            @foreach (var group in Model.Groups)
+            {
+                <button type="submit" class="dropdown-item view-card-dropdown-item" name="group" value="@group.ID">@group.Name</button>
+            }
+        </div>
+    </div>
+}

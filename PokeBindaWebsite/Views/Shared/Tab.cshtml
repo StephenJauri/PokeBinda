@@ -1,15 +1,20 @@
 ﻿@model PokeBindaWebsite.Models.TabModel
 
-@{ 
+@{
     AjaxOptions options = new AjaxOptions()
     {
         UpdateTargetId = "page-content",
         HttpMethod = "Get",
+        LoadingElementDuration = 200,
         LoadingElementId = "loading-div"
     };
 }
-@using (Ajax.BeginForm(Model.Action, Model.Controller, Model.RouteValues, options, new { @class = "tab-form", method="GET"}))
+@using (Ajax.BeginForm(Model.Action, Model.Controller, null, options, new { @class = "tab-form", method = "GET" }))
 {
+    foreach (var hidden in Model.Hiddens)
+    {
+        @Html.Hidden(hidden.Key, hidden.Value);
+    }
     <button type="submit" class="tab-button">
         <div style="background-image:url('/Images/Icons/@Model.Image')" class="tab-image"></div>
         <h4 class="tab-text">@Model.Name</h4>

@@ -8,7 +8,9 @@ namespace PokeBindaWebsite.Models
 {
     public class GroupModel
     {
-        public PokemonCardGroupVM CardGroup { get; set; }
+        public int Group { get; set; }
+        public List<UserPokemonCard> Cards { get; set; }
+//        public PokemonCardGroupVM CardGroup { get; set; }
         public FilterOptionsModel Options { get; set; }
     }
 }

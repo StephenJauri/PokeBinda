@@ -126,7 +126,7 @@ namespace PokeBindaWebsite.Controllers
                 return View("Error");
             }
 
-            return RedirectToAction("Card", "Collection", new {card = newCard.UserCardID});
+            return RedirectToAction("Card", "Collection", new { card = newCard.UserCardID});
         }
     }
 }

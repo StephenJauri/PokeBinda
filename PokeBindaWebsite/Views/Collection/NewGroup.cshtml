@@ -1,0 +1,27 @@
+﻿@model PokeBindaWebsite.Models.NewGroupModel
+@{
+    ViewBag.Title = "NewGroup";
+}
+
+<div class="new-group-container">
+    <h2 class="new-group-header">New Group</h2>
+    @{
+            AjaxOptions options = new AjaxOptions()
+            {
+                HttpMethod = "Post",
+                UpdateTargetId = "tab-container-content",
+                OnSuccess = "hideModal",
+            LoadingElementId = "loading-div"
+        };
+    }
+    @using (Ajax.BeginForm("NewGroup", "Collection", options))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.DisplayFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name,new { @class = "new-group-textbox" })
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+        <button type="submit" class="new-group-create-button">Create</button>
+    }
+</div>

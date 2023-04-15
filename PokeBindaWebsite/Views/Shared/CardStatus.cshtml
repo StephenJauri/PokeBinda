@@ -1,0 +1,41 @@
+﻿@model PokeBindaWebsite.Models.CardStatusModel
+
+@{
+    AjaxOptions options = new AjaxOptions()
+    {
+        HttpMethod = "Post",
+        UpdateTargetId = "dropdown-text",
+        OnComplete = "statusUpdated",
+        OnBegin = "statusUpdating"
+    };
+}
+@*@using (Ajax.BeginForm("UpdateStatus", "Collection", null, options, new { @class = "view-card-status-form" }))
+    {
+        <h4 class="view-card-status-label">Status:</h4>
+        @Html.HiddenFor(m => m.Card)
+        SelectList items = new SelectList(Model.Statuses);
+        @Html.DropDownListFor(m => m.SelectedStatus, items, new { @class = "view-card-status-dropdown" })
+        <button type="submit" class="view-card-status-update-button">
+            <div class="view-card-status-update-image"></div>
+        </button>
+    }*@
+
+@using (Ajax.BeginForm("UpdateStatus", "Collection", null, options, new { @class = "view-card-status-form" }))
+{
+    <h4 class="view-card-status-label">Status:</h4>
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Card)
+    <div class="dropdown">
+        <button class="dropdown-toggle view-card-status-dropdown" id="dropdown-text" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            @Model.SelectedStatus
+        </button>
+        <div class="dropdown-menu view-card-status-dropdown-menu" aria-labelledby="statusDropdownMenuButton">
+            @foreach (var status in Model.Statuses)
+            {
+                <button type="submit" class="dropdown-item view-card-dropdown-item" name="SelectedStatus" value="@status">@status</button>
+            }
+        </div>
+    </div>
+    <h5 class="view-card-status-update-success" id="status-success">Loading
+    </h5>
+}
