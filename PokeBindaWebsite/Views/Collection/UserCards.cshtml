@@ -1,11 +1,8 @@
 ﻿@model List<DataObjects.UserPokemonCard>
 
-<div class="card-display-grid">
-    <div>stff</div>
     <div class="contentContainer scrollViewer">
         @foreach (var card in Model)
         {
             @Html.Partial("UserCard", card)
         }
     </div>
-</div>

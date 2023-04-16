@@ -1,0 +1,25 @@
+﻿@model int?
+
+@{
+    ViewBag.Title = "New Group";
+}
+
+<div class="new-group-container">
+    <h2 class="new-group-header">Set as Favorite Group</h2>
+    @{ 
+        AjaxOptions favoriteOptions = new AjaxOptions()
+        {
+            HttpMethod = "POST",
+            LoadingElementId = "modal-loading",
+            UpdateTargetId = "tab-container-content",
+            LoadingElementDuration = 200,
+            OnSuccess = "hideModal"
+        };
+    }
+    @using (Ajax.BeginForm("ChangeFavoriteGroup", "Collection",null, favoriteOptions, new { @class = "change-favorite-group-form"}))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("group", Model)
+        <button type="submit" class="group-change-favorite-button">Set Favorite</button>
+    }
+</div>

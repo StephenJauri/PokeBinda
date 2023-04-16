@@ -6,7 +6,7 @@
 
 <div class="view-group-container">
     @Html.Hidden("currentGroup", Model.Group, new { id = "currently-viewing-group" })
-    <div class="view-group-manipulation">
+    <div class="view-group-manipulation group-filter-bar">
         @{
             AjaxOptions filterOptions = new AjaxOptions()
             {
@@ -16,16 +16,33 @@
                 UpdateTargetId = "page-content"
             };
         }
-        @using (Ajax.BeginForm("Group", "Collection", null, filterOptions, new { @class = "view-group-filter-form", method = "GET" }))
+        @using (Ajax.BeginForm("Group", "Collection", null, filterOptions, new { @class = "view-group-filter-form", method = "GET", id = "filter-form" }))
         {
             @Html.Hidden("group", Model.Group)
             SelectList types = new SelectList(Model.Options.Types);
-            @Html.DropDownListFor(m => m.Options.Types, types, "Type", new { @class = "type-dropdown" })
+            @Html.DropDownList("Type", types, "Type", new { @class = "type-dropdown" })
             SelectList tags = new SelectList(Model.Options.Tags);
-            @Html.DropDownListFor(m => m.Options.Tag, tags,"Tag", new { @class = "tag-dropdown" })
-            SelectList pokemon = new SelectList(Model.Options.SelectablePokemon, "ID","Name");
-            @Html.DropDownListFor(m => m.Options.Pokemon, pokemon, "Pokemon", new { @class = "pokemon-dropdown" })
+            @Html.DropDownList("Tag", tags, "Tag", new { @class = "tag-dropdown" })
+            SelectList pokemon = new SelectList(Model.Options.SelectablePokemon, "ID", "Name");
+            @Html.DropDownList("Pokemon", pokemon, "Pokemon", new { @class = "pokemon-dropdown" })
             <button type="submit" class="filter-button">Apply</button>
+        }
+        @{
+            AjaxOptions renameOptions = new AjaxOptions()
+            {
+                HttpMethod = "GET",
+                LoadingElementId = "modal-loading",
+                UpdateTargetId = "modal-body",
+                OnSuccess = "rebindValidation",
+                LoadingElementDuration = 200
+            };
+        }
+        @using (Ajax.BeginForm("RenameGroup", "Collection", null, renameOptions, new { @class = "view-group-rename-form", method="GET" }))
+        {
+            @Html.Hidden("Group", Model.Group)
+            <button type="submit" class="rename-button" data-bs-toggle="modal" data-bs-target="#modal-popup">
+                <div class="rename-image"></div>
+            </button>
         }
     </div>
     @Html.Partial("UserCards", Model.Cards)

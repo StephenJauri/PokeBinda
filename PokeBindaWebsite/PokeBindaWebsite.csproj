@@ -203,6 +203,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\AddRemoveGroupsModel.cs" />
+    <Compile Include="Models\RenameGroupModel.cs" />
     <Compile Include="Models\NewGroupModel.cs" />
     <Compile Include="Models\TabModel.cs" />
     <Compile Include="Models\ViewUserCardModel.cs" />
@@ -437,6 +438,9 @@
     <Content Include="Views\Shared\RemoveGroups.cshtml" />
     <Content Include="Views\Shared\AddGroups.cshtml" />
     <Content Include="Views\Collection\NewGroup.cshtml" />
+    <Content Include="Views\Collection\RenameGroup.cshtml" />
+    <Content Include="Views\Collection\RemoveGroup.cshtml" />
+    <Content Include="Views\Collection\ChangeFavoriteGroup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

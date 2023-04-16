@@ -25,8 +25,37 @@ namespace PokeBindaWebsite.Controllers
                 cards =
                     await Task.Run(() =>
                     {
-                        return CardManager.Instance.LoadAllActiveReleasedCardsMinimum();
-                    });
+                        return CardManager.Instance.LoadAllActiveReleasedCards();
+                    }); 
+                if (options.Tag != null)
+                {
+                    cards = cards.Where(c => c.Tags.Contains(options.Tag)).ToList();
+                }
+                if (options.Type != null)
+                {
+                    cards = cards.Where(c => c.Types.Contains(options.Type)).ToList();
+                }
+                if (options.Pokemon != null)
+                {
+                    cards = cards.Where(c => c.Pokemon.Exists(p => p.ID == options.Pokemon)).ToList();
+                }
+                var model = new BrowseModel()
+                {
+                    Cards = cards,
+                    Options = options
+                };
+                await Task.Run(() =>
+                {
+                    model.Options.Tags = LogicLayer.LookupManager.Instance.GetAllTags();
+                    model.Options.Types = LogicLayer.LookupManager.Instance.GetAllTypes();
+                    model.Options.SelectablePokemon = LogicLayer.LookupManager.Instance.GetAllPokemon();
+                });
+
+                if (Request.IsAjaxRequest())
+                {
+                    return PartialView("BrowseCards", model);
+                }
+                return View("BrowseCards", model);
             }
             catch
             {
@@ -36,17 +65,6 @@ namespace PokeBindaWebsite.Controllers
                 }
                 return View("Error");
             }
-            var model = new BrowseModel()
-            {
-                Options = options,
-                Cards = cards
-            };
-
-            if (Request.IsAjaxRequest())
-            {
-                return PartialView("BrowseCards", model);
-            }
-            return View("BrowseCards", model);
         }
 
         [HttpGet]

@@ -4,5 +4,28 @@
     ViewBag.Title = "Index";
 }
 
-@Html.Hidden("currentGroup", "all", new { id = "currently-viewing-group" })
-@Html.Partial("UserCards", Model.Cards)
+<div class="view-group-container">
+    @Html.Hidden("currentGroup", "all", new { id = "currently-viewing-group" })
+    <div class="view-group-manipulation">
+        @{
+            AjaxOptions filterOptions = new AjaxOptions()
+            {
+                HttpMethod = "GET",
+                LoadingElementId = "loading-div",
+                LoadingElementDuration = 200,
+                UpdateTargetId = "page-content"
+            };
+        }
+        @using (Ajax.BeginForm("Group", "Collection", null, filterOptions, new { @class = "view-group-filter-form", method = "GET", id = "filter-form" }))
+        {
+            SelectList types = new SelectList(Model.Options.Types);
+            @Html.DropDownList("Type", types, "Type", new { @class = "type-dropdown" })
+            SelectList tags = new SelectList(Model.Options.Tags);
+            @Html.DropDownList("Tag", tags, "Tag", new { @class = "tag-dropdown" })
+            SelectList pokemon = new SelectList(Model.Options.SelectablePokemon, "ID", "Name");
+            @Html.DropDownList("Pokemon", pokemon, "Pokemon", new { @class = "pokemon-dropdown" })
+            <button type="submit" class="filter-button">Apply</button>
+        }
+    </div>
+    @Html.Partial("UserCards", Model.Cards)
+</div>

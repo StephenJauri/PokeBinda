@@ -50,20 +50,20 @@ function updateGroupInfo(data, status) {
 
 
     if (groupElement != null && groupElement.getAttribute("value") == data.changedGroup) {
-        reloadGroup(groupElement.getAttribute("value"));
+        reloadGroup($("#filter-form").serialize());
     }
 }
 
-function reloadGroup(group)
+function reloadGroup(query)
 {
     $("#loading-div").attr("style", "");
-    $.get("/Collection/Group?group=" + group, function (data) {
+    $.get("/Collection/Group?" + query, function (data) {
         $("#page-content").html(data);
         $("#loading-div").attr("style", "display:none;");
     });
 }
 
-function cardRemoved(data) {
+function cardRemoved(dat) {
     let group = $("#currently-viewing-group").attr("value");
     if (group == null);
     else if (group == "all") {
@@ -75,7 +75,7 @@ function cardRemoved(data) {
     }
     else
     {
-        reloadGroup(group);
+        reloadGroup($("#filter-form").serialize());
     }
 }
 
@@ -88,3 +88,7 @@ function rebindValidation(data) {
 function hideModal(data) {
     $("#modal-popup").modal("hide");
 }
+
+$("#modal-popup").on("hidden.bs.modal", function () {
+    $("#modal-body").html("");
+});

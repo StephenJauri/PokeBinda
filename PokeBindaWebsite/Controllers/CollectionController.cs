@@ -16,45 +16,58 @@ namespace PokeBindaWebsite.Controllers
         // GET: Collection
         public async Task<ActionResult> Index(FilterOptionsModel filtering, User user)
         {
-            var model = new CollectionModel()
-            {
-                Cards = user.PokemonCards,
-                Options = filtering
-            };
-            try
-            {
-                await Task.Run(() =>
+                var cards = user.PokemonCards;
+                if (filtering.Tag != null)
                 {
-                    model.Options.Tags = LogicLayer.LookupManager.Instance.GetAllTags();
-                    model.Options.Types = LogicLayer.LookupManager.Instance.GetAllTypes();
-                    model.Options.SelectablePokemon = LogicLayer.LookupManager.Instance.GetAllPokemon();
-                });
-                if (Request.IsAjaxRequest())
-                {
-                    return PartialView("Index", model);
+                    cards = cards.Where(c => c.Tags.Contains(filtering.Tag)).ToList();
                 }
-                return View("Index", model);
-            }
-            catch
-            {
-                if (Request.IsAjaxRequest())
+                if (filtering.Type != null)
                 {
-                    return PartialView("Error");
+                    cards = cards.Where(c => c.Types.Contains(filtering.Type)).ToList();
                 }
-                return View("Error");
+                if (filtering.Pokemon != null)
+                {
+                    cards = cards.Where(c => c.Pokemon.Exists(p => p.ID == filtering.Pokemon)).ToList();
+                }
+                try
+                {
+                    var model = new CollectionModel()
+                    {
+                        Cards = cards,
+                        Options = filtering
+                    };
+                    await Task.Run(() =>
+                    {
+                        model.Options.Tags = LogicLayer.LookupManager.Instance.GetAllTags();
+                        model.Options.Types = LogicLayer.LookupManager.Instance.GetAllTypes();
+                        model.Options.SelectablePokemon = LogicLayer.LookupManager.Instance.GetAllPokemon();
+                    });
+                    if (Request.IsAjaxRequest())
+                    {
+                        return PartialView("Index", model);
+                    }
+                    return View("Index", model);
+                }
+                catch
+                {
+                    if (Request.IsAjaxRequest())
+                    {
+                        return PartialView("Error");
+                    }
+                    return View("Error");
+                }
             }
-        }
-         
+
         // GET: Group
         [HttpGet]
-        public async Task<ActionResult> Group(int? group, FilterOptionsModel filtering, User user)
+        public async Task<ActionResult> Group(FilterOptionsModel filtering, int? group, User user)
         {
             if (group == null)
             {
                 return await Index(filtering, user);
             }
             var groups = user.Groups.ToList();
-                groups.Add(user.FavoriteGroup);
+            groups.Add(user.FavoriteGroup);
 
             var userCardGroup = groups.Find(gr => gr.ID == group);
             if (userCardGroup == null)
@@ -107,13 +120,14 @@ namespace PokeBindaWebsite.Controllers
                     return View("Error");
                 }
                 if (Request.IsAjaxRequest())
-            {
-                return PartialView("Group",model);
-            }
-            return View("Group", model);
+                {
+                    return PartialView("Group", model);
+                }
+                return View("Group", model);
             }
         }
 
+        [HttpGet]
         public async Task<ActionResult> Card(int? card, User user)
         {
             var model = new ViewUserCardModel();
@@ -179,6 +193,7 @@ namespace PokeBindaWebsite.Controllers
                 return View();
             }
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -426,6 +441,199 @@ namespace PokeBindaWebsite.Controllers
                     return Json(new { success = false });
                 }
                 return View("Error");
+            }
+        }
+
+
+        [HttpGet]
+        public async Task<ActionResult> RenameGroup(int? group, User user)
+        {
+
+            if (!User.IsInRole("Premium"))
+            {
+                if (group == null)
+                {
+                    if (Request.IsAjaxRequest())
+                    {
+                        return PartialView("Error");
+                    }
+                    return View("Error");
+                }
+                var allGroups = user.Groups.ToList();
+                allGroups.Add(user.FavoriteGroup);
+
+                var userGroup = allGroups.Find(g => g.ID == group.Value);
+                if (userGroup == null)
+                {
+                    if (Request.IsAjaxRequest())
+                    {
+                        return PartialView("Error");
+                    }
+                    return View("Error");
+                }
+                if (Request.IsAjaxRequest())
+                {
+                    return PartialView(new RenameGroupModel() { Group = group, Name = userGroup.Name, Favorite = userGroup.Favorite });
+                }
+                return View(new RenameGroupModel() { Group = group, Name = userGroup.Name });
+            }
+            else
+            {
+                return RedirectToAction("GoPremium", "Account");
+            }
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RenameGroup(RenameGroupModel model, User user)
+        {
+            if (!User.IsInRole("Premium"))
+            {
+                if (ModelState.IsValid)
+                {
+                    try
+                    {
+                        var userGroups = user.Groups.ToList();
+                        userGroups.Add(user.FavoriteGroup);
+
+                        var userGroup = userGroups.Find(g => g.ID == model.Group.Value);
+                        if (userGroup == null)
+                        {
+                            throw new ApplicationException("Invalid Group");
+                        }
+                        await Task.Run(() => LogicLayer.UserManager.Instance.RenameGroup(user, userGroup, model.Name));
+
+                        if (Request.IsAjaxRequest())
+                        {
+                            return RedirectToAction("Navigation", "Home");
+                        }
+                        return RedirectToAction("Index", "Home");
+                    }
+                    catch
+                    {
+                        return Redirect("/Account/GoPremium");
+                    }
+                }
+                else
+                {
+                    if (Request.IsAjaxRequest())
+                    {
+                        return RedirectToAction("Navigation", "Home");
+                    }
+                    return View(model);
+                }
+            }
+            else
+            {
+                return RedirectToAction("GoPremium", "Account");
+            }
+        }
+
+
+        [HttpGet]
+        public async Task<ActionResult> RemoveGroup(int? group)
+        {
+            if (!User.IsInRole("Premium"))
+            {
+                if (Request.IsAjaxRequest())
+                {
+                    return PartialView(group);
+                }
+                return View(group);
+            }
+            else // change later to redirect to a upgrade to premium page
+            {
+                return RedirectToAction("GoPremium", "Account");
+            }
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RemoveGroup(int? group, User user)
+        {
+            if (!User.IsInRole("Premium"))
+            {
+                try
+                {
+                    if (group == null)
+                    {
+                        throw new ApplicationException("No group specified");
+                    }
+
+                    var userGroup = user.Groups.Find(g => g.ID == group.Value);
+                    if (userGroup == null)
+                    {
+                        throw new ApplicationException("Invalid Group");
+                    }
+
+                    await Task.Run(() => LogicLayer.UserManager.Instance.DeleteGroup(user, userGroup));
+                    return RedirectToAction("Index", "Home");
+                }
+                catch
+                {
+                    return View("Error");
+                }
+            }
+            else
+            {
+                return Redirect("/Account/GoPremium");
+            }
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> ChangeFavoriteGroup(int? group)
+        {
+            if (!User.IsInRole("Premium"))
+            {
+                if (Request.IsAjaxRequest())
+                {
+                    return PartialView(group);
+                }
+                return View(group);
+            }
+            else // change later to redirect to a upgrade to premium page
+            {
+                return RedirectToAction("GoPremium", "Account");
+            }
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangeFavoriteGroup(int? group, User user)
+        {
+            if (!User.IsInRole("Premium"))
+            {
+                try
+                {
+                    if (group == null)
+                    {
+                        throw new ApplicationException("No group specified");
+                    }
+
+                    var userGroup = user.Groups.Find(g => g.ID == group.Value);
+                    if (userGroup == null)
+                    {
+                        throw new ApplicationException("Invalid Group");
+                    }
+
+                    await Task.Run(() => LogicLayer.UserManager.Instance.SetFavoriteGroup(user, userGroup));
+                    if (Request.IsAjaxRequest())
+                    {
+                        return RedirectToAction("Navigation", "Home");
+                    }
+                    return RedirectToAction("Index", "Home");
+                }
+                catch
+                {
+                    return View("Error");
+                }
+            }
+            else
+            {
+                return Redirect("/Account/GoPremium");
             }
         }
     }

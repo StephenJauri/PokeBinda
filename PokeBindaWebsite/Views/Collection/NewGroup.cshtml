@@ -1,6 +1,6 @@
 ﻿@model PokeBindaWebsite.Models.NewGroupModel
 @{
-    ViewBag.Title = "NewGroup";
+    ViewBag.Title = "New Group";
 }
 
 <div class="new-group-container">
@@ -11,14 +11,14 @@
                 HttpMethod = "Post",
                 UpdateTargetId = "tab-container-content",
                 OnSuccess = "hideModal",
-            LoadingElementId = "loading-div"
+                LoadingElementId = "modal-loading"
         };
     }
     @using (Ajax.BeginForm("NewGroup", "Collection", options))
     {
         @Html.AntiForgeryToken()
         <div class="form-group">
-            @Html.DisplayFor(m => m.Name)
+            @Html.LabelFor(m => m.Name)
             @Html.TextBoxFor(m => m.Name,new { @class = "new-group-textbox" })
             @Html.ValidationMessageFor(m => m.Name)
         </div>

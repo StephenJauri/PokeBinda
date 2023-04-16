@@ -14,18 +14,109 @@
     background: none;
     border: 1px solid #FFC18E;
     border-radius: 5px;
+    height:30px;
 }
 
 .new-group-create-button {
     width: 80%;
     max-width: 400px;
+    height: 40px;
     margin: 10px 10%;
     background: none;
     border: 1px solid #FFC18E;
     border-radius: 5px;
 }
+.rename-group-favorite-delete {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 75px;
+}
+.group-delete-button {
+    width: 60%;
+    max-width: 400px;
+    margin: 10px 20%;
+    height: 30px;
+    background: none;
+    border: 1px solid #1f000e;
+    color: #8a0140;
+    border-radius: 5px;
+}
 
+.group-change-favorite-button {
+    width: 60%;
+    max-width: 400px;
+    margin: 10px 20%;
+    height: 30px;
+    background: none;
+    border-radius: 5px;
+    border: 1px solid #FFC18E;
+}
+
+    .group-change-favorite-button:hover {
+        border: 1px solid #FFC18EA0;
+        color: #FFC18EA0;
+    }
+
+.view-group-favorite-form {
+    grid-row: 1;
+    grid-column: 1;
+    width: 100%;
+    height: 75px;
+}
+
+.favorite-button {
+    width: 75px;
+    background: none;
+    border: none;
+}
+
+.favorite-image {
+    width: 80%;
+    margin: 10%;
+    vertical-align: middle;
+    background-image: url("/Images/Icons/notfavoriteicon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    aspect-ratio: 1/1;
+}
+.favorite-button:hover .favorite-image {
+    width: 96%;
+    margin: 2%;
+}
+
+.view-group-delete-form {
+    grid-row: 1;
+    grid-column: 2;
+    width: 100%;
+    height: 50px;
+}
+
+.delete-button {
+    width: 100%;
+    background: none;
+    border: none;
+}
+
+.delete-image {
+    width: 30px;
+    margin: 5px 5px auto auto;
+    background-image: url("/Images/Icons/trashicon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    aspect-ratio: 1/1;
+}
+
+.delete-button:hover .delete-image {
+    width: 35px;
+    margin: 2.5px 2.5px auto auto;
+}
+
+.group-delete-button:hover {
+    border: 1px solid #1f000e50;
+    color: #8a014050;
+}
 
 .new-group-create-button:hover, .new-group-textbox:hover {
     border: 1px solid #FFC18EA0;
+    color: #FFC18EA0;
 }

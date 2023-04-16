@@ -1,0 +1,15 @@
+﻿@model int?
+
+@{
+    ViewBag.Title = "New Group";
+}
+
+<div class="new-group-container">
+    <h2 class="new-group-header">REMOVE GROUP</h2>
+    @using (Html.BeginForm("RemoveGroup", "Collection",FormMethod.Post, new { @class = "remove-group-form"}))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("group", Model)
+        <button type="submit" class="group-delete-button">DELETE</button>
+    }
+</div>

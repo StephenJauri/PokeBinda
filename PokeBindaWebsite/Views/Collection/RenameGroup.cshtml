@@ -1,0 +1,69 @@
+﻿@model PokeBindaWebsite.Models.RenameGroupModel
+@{
+    ViewBag.Title = "Rename Group";
+}
+
+@if (!Model.Favorite)
+{
+    <div class="rename-group-favorite-delete">
+        @{
+            AjaxOptions favoriteOptions = new AjaxOptions()
+            {
+                HttpMethod = "GET",
+                LoadingElementId = "modal-loading",
+                UpdateTargetId = "modal-body",
+                LoadingElementDuration = 200
+            };
+        }
+        @using (Ajax.BeginForm("ChangeFavoriteGroup", "Collection", null, favoriteOptions, new { @class = "view-group-favorite-form", method = "GET" }))
+        {
+            @Html.Hidden("group", Model.Group)
+            <button type="submit" class="favorite-button">
+                <div class="favorite-image"></div>
+            </button>
+        }
+
+        @{
+            AjaxOptions deleteOptions = new AjaxOptions()
+            {
+                HttpMethod = "GET",
+                LoadingElementId = "modal-loading",
+                UpdateTargetId = "modal-body",
+                LoadingElementDuration = 200
+            };
+        }
+        @using (Ajax.BeginForm("RemoveGroup", "Collection", null, deleteOptions, new { @class = "view-group-delete-form", method = "GET" }))
+        {
+            @Html.Hidden("group", Model.Group)
+            <button type="submit" class="delete-button">
+                <div class="delete-image"></div>
+            </button>
+        }
+    </div>
+}
+<div class="new-group-container">
+
+
+    <h2 class="new-group-header">Rename Group</h2>
+    @{
+        AjaxOptions options = new AjaxOptions()
+        {
+            HttpMethod = "Post",
+            UpdateTargetId = "tab-container-content",
+            LoadingElementDuration = 200,
+            OnSuccess = "hideModal",
+            LoadingElementId = "modal-loading"
+        };
+    }
+    @using (Ajax.BeginForm("RenameGroup", "Collection", options))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Group)
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "new-group-textbox" })
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+        <button type="submit" class="new-group-create-button">Rename</button>
+    }
+</div>
